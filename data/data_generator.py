@@ -21,22 +21,22 @@ class DataGenerator:
         """!
         Constructor of the class
 
-        :param ts: total observational time, in unit of delta
+        @param ts: total observational time, in unit of delta
 
-        :param delta: value of the time delay, unit is days
+        @param delta: value of the time delay, unit is days
 
-        :param samples_per_delta: value of the regular sampling frequency, in units of 1/delta
+        @param samples_per_delta: value of the regular sampling frequency, in units of 1/delta
 
-        :param image_ratio: ratio between the two image signals
+        @param image_ratio: ratio between the two image signals
 
-        :param seed: seed of numpy random generator
+        @param seed: seed of numpy random generator
 
-        :param n_gaps: number of gaps to simulate in artificial data, positive integer
+        @param n_gaps: number of gaps to simulate in artificial data, positive integer
 
-        :param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
+        @param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
         each gap
 
-        :param noise_level: relative size of error bars wrt to signal
+        @param noise_level: relative size of error bars wrt to signal
         """
         if ts is None:
             raise ParameterError("Total observational time cannot be None")
@@ -148,18 +148,18 @@ class DataGenerator:
 
     def generate_light_curves(self, mask=None, means=None, sigmas=None, heights=None, noise_level=None):
         """
-        :param mask, numpy boolean array for masking
+        @param mask, numpy boolean array for masking
 
-        :param means, numpy array containing means of gaussians to be superimposed
+        @param means, numpy array containing means of gaussians to be superimposed
 
-        :param sigmas, numpy array containing sigmas of gaussians to be superimposed
+        @param sigmas, numpy array containing sigmas of gaussians to be superimposed
 
-        :param heights, numpy array containing peak heights of gaussians to be superimposed
+        @param heights, numpy array containing peak heights of gaussians to be superimposed
 
-        :param noise_level, float representing the fraction of the flux used to compute the sigma of the gaussian
+        @param noise_level, float representing the fraction of the flux used to compute the sigma of the gaussian
         noise
 
-        :rtype: tuple containing time_domain, signal a, signal b, errors on a, errors on b
+        @return: tuple containing time_domain, signal a, signal b, errors on a, errors on b
         """
         time_domain = self.t_domain
         if mask is not None:
