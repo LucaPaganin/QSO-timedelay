@@ -1,5 +1,8 @@
 import numpy as np
 import pandas as pd
+from pathlib import Path
+import os
+
 
 class ParameterError(Exception):
     pass
@@ -14,8 +17,7 @@ class DataGenerator:
                  seed=0,
                  n_gaps=None,
                  gap_size=None,
-                 noise_amplitude=0,
-                 relative_error_amplitude=None):
+                 noise_level=None):
         """!
         Constructor of the class
 
@@ -34,9 +36,7 @@ class DataGenerator:
         :param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
         each gap
 
-        :param noise_amplitude: relative size of gaussian noise sigma wrt to signal
-
-        :param relative_error_amplitude: relative size of error bars wrt to signal
+        :param noise_level: relative size of error bars wrt to signal
         """
         if ts is None:
             raise ParameterError("Total observational time cannot be None")
@@ -47,11 +47,11 @@ class DataGenerator:
         if samples_per_delta is None:
             raise ParameterError("Sampling frequency cannot be None")
         self.samples_per_delta = samples_per_delta
-        if relative_error_amplitude is None:
-            raise ParameterError("Relative error amplitude cannot be none")
-        self.relative_error_amplitude = relative_error_amplitude
-        if image_ratio is None:
-            raise ParameterError("Image ratio cannot be None!")
+        if noise_level is None or noise_level < 0:
+            raise ParameterError("Noise level cannot be none or negative")
+        self.noise_level = noise_level
+        if image_ratio is None or image_ratio < 0:
+            raise ParameterError("Image ratio cannot be None or negative!")
         self.image_ratio = image_ratio
 
         np.random.seed(seed)
@@ -62,7 +62,6 @@ class DataGenerator:
 
         self.n_gaps = n_gaps
         self.gap_size = gap_size
-        self.noise_amplitude = noise_amplitude
 
         if self.n_gaps is not None:
             if self.n_gaps < 0 or int(self.n_gaps) != self.n_gaps:
@@ -70,19 +69,18 @@ class DataGenerator:
         if self.gap_size is not None:
             if self.gap_size < 0 or int(self.gap_size) != self.gap_size:
                 raise ParameterError(f"Gap size parameter must be a positive integer, not {self.gap_size}")
-        if self.noise_amplitude < 0:
-            raise ParameterError("Noise amplitude cannot be negative")
-        if self.image_ratio is not None and self.image_ratio < 0:
-            raise ParameterError("Image ratio cannot be negative")
         self.gaussian_means = None
         self.gaussian_sigmas = None
+        self.gaussian_peak_heights = None
 
     def generate_gaussian_signal_parameters(self):
         means = np.random.random(20) * self.tmax
         sigmas = np.random.random(20) * (self.tmax / 4)
+        heights = 1 + 5 * np.random.random(20)
         self.gaussian_means = means.copy()
         self.gaussian_sigmas = sigmas.copy()
-        return means, sigmas
+        self.gaussian_peak_heights = heights.copy()
+        return means, sigmas, heights
 
     def generate_noisy_time_domain(self):
         sampling_noise = (np.random.random(len(self.t_regular)) - 0.5) * (self.delta / self.samples_per_delta)
@@ -90,58 +88,65 @@ class DataGenerator:
         self.t_domain = t_domain.copy()
         return t_domain
 
-    def set_gap_parameters(self, n_gaps, gap_size):
-        self.n_gaps = n_gaps
-        self.gap_size = gap_size
-
     @staticmethod
-    def gaussian_signal(t_domain, means, sigmas):
-        if means.shape != sigmas.shape:
-            raise ParameterError("means and sigmas arrays must have the same shape!")
+    def gaussian_signal(t_domain, means, sigmas, heights):
+        if not (means.shape == sigmas.shape and means.shape == heights.shape):
+            raise ParameterError("means, sigmas and heights arrays must have the same shape!")
 
         signal = np.zeros(t_domain.shape)
-        for mean, sigma in zip(means, sigmas):
-            signal += np.exp(-(t_domain - mean) ** 2 / (2 * sigma ** 2))
+        for mean, sigma, height in zip(means, sigmas, heights):
+            signal += height * np.exp(-(t_domain - mean) ** 2 / (2 * sigma ** 2))
         return signal
+
+    @staticmethod
+    def get_dataset_filepath(fname=None, noise_level=None, gap_size=None, realization_id=None, outdir=None):
+        dst_dir = outdir / f"{fname}" / f"gap_{gap_size}" / f"noise_{noise_level}"
+        filename = f"DS-500_{fname}_noise{noise_level}_gapsize_{gap_size}_{realization_id}.csv"
+        return dst_dir / filename
 
     def get_supersampled_timedomain(self):
         t_supersampled = np.linspace(0, self.tmax, num=1000)
         return t_supersampled
-        
-    def get_underlying_signal(self, t, image=None, means=None, sigmas=None):
+
+    def get_underlying_signal(self, t, image=None, means=None, sigmas=None, heights=None):
         means = means if means is not None else self.gaussian_means
         sigmas = sigmas if sigmas is not None else self.gaussian_sigmas
-        
+        heights = heights if heights is not None else self.gaussian_peak_heights
+
         if image is None:
             raise ParameterError("image string cannot be None")
         if image == "A":
-            underlying_function = self.gaussian_signal(t, means, sigmas)
+            underlying_function = self.gaussian_signal(t, means, sigmas, heights)
         elif image == "B":
-            underlying_function = self.image_ratio * self.gaussian_signal(t + self.delta, 
-                                                                          means, 
-                                                                          sigmas)
+            underlying_function = self.image_ratio * self.gaussian_signal(t + self.delta,
+                                                                          means,
+                                                                          sigmas,
+                                                                          heights)
         else:
             raise ParameterError(f"Not recognized image option {image}")
-        
+
         return underlying_function
-        
-    def generate_gap_mask(self):
-        possible_gap_centers = np.arange(self.gap_size - 1,
-                                         len(self.t_domain) - self.gap_size,
-                                         step=self.gap_size + 1,
+
+    def generate_gap_mask(self, gap_size=None):
+        if gap_size is None or gap_size < 0:
+            raise ParameterError(f"Invalid gap_size value {gap_size}")
+
+        possible_gap_centers = np.arange(gap_size - 1,
+                                         len(self.t_domain) - gap_size,
+                                         step=gap_size + 1,
                                          dtype=int)
         gap_centers = np.random.choice(possible_gap_centers, size=self.n_gaps, replace=False)
 
         mask = np.ones(len(self.t_domain), dtype=bool)
         for c in gap_centers:
             # Compute left and right indices around gap
-            a = c - int(self.gap_size / 2) + (1 - self.gap_size % 2)
-            b = c + int(self.gap_size / 2) + 1
+            a = c - int(gap_size / 2) + (1 - gap_size % 2)
+            b = c + int(gap_size / 2) + 1
             mask[a:b] = False
 
         return mask
 
-    def generate_light_curves(self, mask=None, means=None, sigmas=None, noise_amplitude=None):
+    def generate_light_curves(self, mask=None, means=None, sigmas=None, heights=None, noise_level=None):
         """
         :param mask, numpy boolean array for masking
 
@@ -149,31 +154,81 @@ class DataGenerator:
 
         :param sigmas, numpy array containing sigmas of gaussians to be superimposed
 
-        :param noise_amplitude, float representing the fraction of the flux used to compute the sigma of the gaussian
+        :param heights, numpy array containing peak heights of gaussians to be superimposed
+
+        :param noise_level, float representing the fraction of the flux used to compute the sigma of the gaussian
         noise
 
         :rtype: tuple containing time_domain, signal a, signal b, errors on a, errors on b
         """
         time_domain = self.t_domain
-        noise_amplitude = noise_amplitude if noise_amplitude is not None else 0
         if mask is not None:
             time_domain = self.t_domain[mask]
         if means is None or sigmas is None:
             raise ParameterError("Gaussian means or sigmas cannot be None")
+        if noise_level is None or noise_level < 0:
+            raise ParameterError("Noise level cannot be None or negative")
 
-        a = self.get_underlying_signal(time_domain, image="A", means=means, sigmas=sigmas)
-        b = self.get_underlying_signal(time_domain, image="B", means=means, sigmas=sigmas)
-        sigma_a = np.abs(self.relative_error_amplitude * a)
-        sigma_b = np.abs(self.relative_error_amplitude * b)
-        if noise_amplitude > 0:
-            noise_a = np.random.normal(0, noise_amplitude * a)
-            noise_b = np.random.normal(0, noise_amplitude * b)
-            a += noise_a
-            b += noise_b
+        a = self.get_underlying_signal(time_domain, image="A", means=means, sigmas=sigmas, heights=heights)
+        b = self.get_underlying_signal(time_domain, image="B", means=means, sigmas=sigmas, heights=heights)
+        sigma_a = np.abs(noise_level * a)
+        sigma_b = np.abs(noise_level * b)
+        noise_a = np.random.normal(0, sigma_a)
+        noise_b = np.random.normal(0, sigma_b)
+        a += noise_a
+        b += noise_b
 
         return time_domain, a, b, sigma_a, sigma_b
 
-    def generate_dataset(self, mask=None, means=None, sigmas=None, noise_amplitude=None):
-        *data, = self.generate_light_curves(mask=mask, means=means, sigmas=sigmas, noise_amplitude=noise_amplitude)
-        df = pd.DataFrame(data=np.array(data).T, columns=["time", "A", "B", "SigmaA", "SigmaB"])
+    @staticmethod
+    def get_num_realizations(gap_size=None, noise_level=None):
+        if noise_level == 0:
+            if gap_size == 0:
+                n = 1
+            else:
+                n = 10
+        else:
+            if gap_size == 0:
+                n = 50
+            else:
+                n = 500
+        return n
+
+    def generate_single_realization_dataset(self, means=None, sigmas=None, heights=None, noise_level=None, gap_size=None):
+        mask = self.generate_gap_mask(gap_size=gap_size)
+        *data, = self.generate_light_curves(mask=mask, means=means, sigmas=sigmas, heights=heights, noise_level=noise_level)
+        columns = ["time", "A", "B", "sigmaA", "sigmaB"]
+        df = pd.DataFrame(data=np.array(data).T, columns=columns)
         return df
+
+    def generate_single_waveform_dataset(self, means=None, sigmas=None, heights=None, fname=None, outdir=None):
+        if any([x is None for x in locals().values()]):
+            raise ParameterError("One of the parameters is None")
+
+        if not isinstance(outdir, Path):
+            try:
+                outdir = Path(outdir)
+            except:
+                raise Exception(f"Cannot construct pathlib.Path from parameter {outdir}")
+
+        noise_levels = [0.00, 0.01, 0.02, 0.03]
+        gap_sizes = [0, 1, 2, 3, 4, 5]
+
+        for gap_size in gap_sizes:
+            for noise_level in noise_levels:
+                n = self.get_num_realizations(gap_size=gap_size, noise_level=noise_level)
+                for k in range(n):
+                    df = self.generate_single_realization_dataset(means=means,
+                                                                  sigmas=sigmas,
+                                                                  heights=heights,
+                                                                  noise_level=noise_level,
+                                                                  gap_size=gap_size)
+                    file_path = self.get_dataset_filepath(outdir=outdir,
+                                                          fname=fname,
+                                                          gap_size=gap_size,
+                                                          noise_level=noise_level,
+                                                          realization_id=k+1)
+                    dir_path = file_path.parent
+                    dir_path.mkdir(parents=True, exist_ok=True)
+                    df.to_csv(file_path)
+                    del df
