@@ -34,7 +34,9 @@ class DataGenerator:
         :param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
         each gap
 
-        :param noise_amplitude: relative size of noise wrt to signal
+        :param noise_amplitude: relative size of gaussian noise sigma wrt to signal
+
+        :param relative_error_amplitude: relative size of error bars wrt to signal
         """
         if ts is None:
             raise ParameterError("Total observational time cannot be None")
@@ -48,6 +50,9 @@ class DataGenerator:
         if relative_error_amplitude is None:
             raise ParameterError("Relative error amplitude cannot be none")
         self.relative_error_amplitude = relative_error_amplitude
+        if image_ratio is None:
+            raise ParameterError("Image ratio cannot be None!")
+        self.image_ratio = image_ratio
 
         np.random.seed(seed)
         self.tmax = self.ts * self.delta
@@ -58,7 +63,6 @@ class DataGenerator:
         self.n_gaps = n_gaps
         self.gap_size = gap_size
         self.noise_amplitude = noise_amplitude
-        self.image_ratio = image_ratio
 
         if self.n_gaps is not None:
             if self.n_gaps < 0 or int(self.n_gaps) != self.n_gaps:
@@ -82,7 +86,9 @@ class DataGenerator:
 
     def generate_noisy_time_domain(self):
         sampling_noise = (np.random.random(len(self.t_regular)) - 0.5) * (self.delta / self.samples_per_delta)
-        self.t_domain = self.t_regular + sampling_noise
+        t_domain = self.t_regular + sampling_noise
+        self.t_domain = t_domain.copy()
+        return t_domain
 
     def set_gap_parameters(self, n_gaps, gap_size):
         self.n_gaps = n_gaps
@@ -98,6 +104,27 @@ class DataGenerator:
             signal += np.exp(-(t_domain - mean) ** 2 / (2 * sigma ** 2))
         return signal
 
+    def get_supersampled_timedomain(self):
+        t_supersampled = np.linspace(0, self.tmax, num=1000)
+        return t_supersampled
+        
+    def get_underlying_signal(self, t, image=None, means=None, sigmas=None):
+        means = means if means is not None else self.gaussian_means
+        sigmas = sigmas if sigmas is not None else self.gaussian_sigmas
+        
+        if image is None:
+            raise ParameterError("image string cannot be None")
+        if image == "A":
+            underlying_function = self.gaussian_signal(t, means, sigmas)
+        elif image == "B":
+            underlying_function = self.image_ratio * self.gaussian_signal(t + self.delta, 
+                                                                          means, 
+                                                                          sigmas)
+        else:
+            raise ParameterError(f"Not recognized image option {image}")
+        
+        return underlying_function
+        
     def generate_gap_mask(self):
         possible_gap_centers = np.arange(self.gap_size - 1,
                                          len(self.t_domain) - self.gap_size,
@@ -134,8 +161,8 @@ class DataGenerator:
         if means is None or sigmas is None:
             raise ParameterError("Gaussian means or sigmas cannot be None")
 
-        a = self.gaussian_signal(time_domain, means, sigmas)
-        b = self.gaussian_signal(time_domain + self.delta, means, sigmas)
+        a = self.get_underlying_signal(time_domain, image="A", means=means, sigmas=sigmas)
+        b = self.get_underlying_signal(time_domain, image="B", means=means, sigmas=sigmas)
         sigma_a = np.abs(self.relative_error_amplitude * a)
         sigma_b = np.abs(self.relative_error_amplitude * b)
         if noise_amplitude > 0:
