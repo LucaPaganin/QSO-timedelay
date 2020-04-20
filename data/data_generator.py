@@ -100,7 +100,7 @@ class DataGenerator:
 
     @staticmethod
     def get_dataset_filepath(fname=None, noise_level=None, gap_size=None, realization_id=None, outdir=None):
-        dst_dir = outdir / f"{fname}" / f"gap_{gap_size}" / f"noise_{noise_level}"
+        dst_dir = outdir / f"{fname}" / f"gap_{gap_size}" / f"noise_{noise_level:.2f}"
         filename = f"DS-500_{fname}_noise{noise_level}_gapsize_{gap_size}_{realization_id}.csv"
         return dst_dir / filename
 
