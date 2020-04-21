@@ -9,6 +9,30 @@ class ParameterError(Exception):
 
 
 class DataGenerator:
+    """This is a class which generates datasets of artificial light curves data
+
+    :param ts: total observation time, in unit of delta
+    :type ts: float
+    :param delta: value of the time delay, unit is days
+    :type delta: float
+    :param tmax: total observation time, obtained from the product between ``ts`` and ``delta``
+    :type tmax: float
+    :param samples_per_delta: value of the regular sampling frequency, in units of 1/delta
+    :type samples_per_delta: float
+    :param image_ratio: ratio between the two image signals
+    :type image_ratio: float
+    :param seed: seed of numpy random generator
+    :type seed: float
+    :param n_gaps: number of gaps to simulate in artificial data
+    :type n_gaps: int
+    :param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
+                     each gap
+    :type gap_size: int
+    :param noise_level: relative size of error bars wrt to signal
+    :type noise_level: float
+    :param image_ratio: multiplicative factor between the two light curves
+    :type image_ratio: float
+    """
     def __init__(self,
                  ts=None,
                  delta=None,
@@ -18,26 +42,7 @@ class DataGenerator:
                  n_gaps=None,
                  gap_size=None,
                  noise_level=None):
-        """!
-        Constructor of the class
 
-        @param ts: total observational time, in unit of delta
-
-        @param delta: value of the time delay, unit is days
-
-        @param samples_per_delta: value of the regular sampling frequency, in units of 1/delta
-
-        @param image_ratio: ratio between the two image signals
-
-        @param seed: seed of numpy random generator
-
-        @param n_gaps: number of gaps to simulate in artificial data, positive integer
-
-        @param gap_size: size of simulated gaps, positive integer. It represents the number of missing samples for
-        each gap
-
-        @param noise_level: relative size of error bars wrt to signal
-        """
         if ts is None:
             raise ParameterError("Total observational time cannot be None")
         self.ts = ts
@@ -56,10 +61,8 @@ class DataGenerator:
 
         np.random.seed(seed)
         self.tmax = self.ts * self.delta
-        self.original_n_samples = self.ts * self.samples_per_delta
-        self.t_regular = np.linspace(0, self.tmax, num=self.original_n_samples)
+        self.t_regular = np.linspace(0, self.tmax, num=int(self.ts * self.samples_per_delta))
         self.t_domain = self.t_regular.copy()
-
         self.n_gaps = n_gaps
         self.gap_size = gap_size
 
@@ -147,19 +150,22 @@ class DataGenerator:
         return mask
 
     def generate_light_curves(self, mask=None, means=None, sigmas=None, heights=None, noise_level=None):
-        """
-        @param mask, numpy boolean array for masking
+        """Method to generate a masked time domain and two light curves sampled over it
 
-        @param means, numpy array containing means of gaussians to be superimposed
-
-        @param sigmas, numpy array containing sigmas of gaussians to be superimposed
-
-        @param heights, numpy array containing peak heights of gaussians to be superimposed
-
-        @param noise_level, float representing the fraction of the flux used to compute the sigma of the gaussian
-        noise
-
-        @return: tuple containing time_domain, signal a, signal b, errors on a, errors on b
+        :param mask: numpy boolean array for masking
+        :type mask: numpy.ndarray
+        :param means: numpy array containing means of gaussians to be superimposed
+        :type means: numpy.ndarray
+        :param sigmas: numpy array containing sigmas of gaussians to be superimposed
+        :type sigmas: numpy.ndarray
+        :param heights: numpy array containing peak heights of gaussians to be superimposed
+        :type sigmas: numpy.ndarray
+        :param noise_level: float representing the fraction of the flux used to compute the sigma of the gaussian
+                            noise
+        :type noise_level: float
+        :return: a tuple containing time_domain, signal a, signal b, errors on a, errors on b.
+                 The time domain is masked with the boolean mask parameter if it is provided.
+        :rtype: tuple of numpy.ndarray
         """
         time_domain = self.t_domain
         if mask is not None:
