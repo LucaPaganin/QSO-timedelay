@@ -152,7 +152,7 @@ class DataGenerator:
 
         return mask
 
-    def generate_light_curves(self, mask=None, means=None, sigmas=None, heights=None, noise_level=None):
+    def generate_light_curves(self, mask=None, means=None, sigmas=None, heights=None):
         """Method to generate a masked time domain and two light curves sampled over it
 
         :param mask: numpy boolean array for masking
@@ -163,9 +163,6 @@ class DataGenerator:
         :type sigmas: numpy.ndarray
         :param heights: numpy array containing peak heights of gaussians to be superimposed
         :type sigmas: numpy.ndarray
-        :param noise_level: float representing the fraction of the flux used to compute the sigma of the gaussian
-                            noise
-        :type noise_level: float
         :return: a tuple containing time_domain, signal a, signal b, errors on a, errors on b.
                  The time domain is masked with the boolean mask parameter if it is provided.
         :rtype: tuple of numpy.ndarray
@@ -173,10 +170,8 @@ class DataGenerator:
         time_domain = self.t_domain
         if mask is not None:
             time_domain = self.t_domain[mask]
-        if means is None or sigmas is None:
-            raise ParameterError("Gaussian means or sigmas cannot be None")
-        if noise_level is None or noise_level < 0:
-            raise ParameterError("Noise level cannot be None or negative")
+        if any([x is None for x in [means, sigmas, heights]]):
+            raise ParameterError("Gaussian means, sigmas or heights cannot be None")
 
         a = self.get_underlying_signal(time_domain, image="A", means=means, sigmas=sigmas, heights=heights)
         b = self.get_underlying_signal(time_domain, image="B", means=means, sigmas=sigmas, heights=heights)
@@ -187,7 +182,6 @@ class DataGenerator:
             noise_b = np.random.normal(0, sigma_b)
             a += noise_a
             b += noise_b
-
         return time_domain, a, b, sigma_a, sigma_b
 
     @staticmethod
@@ -204,11 +198,9 @@ class DataGenerator:
                 n = 500
         return n
 
-    def generate_single_realization_dataset(self, means=None, sigmas=None, heights=None, noise_level=None,
-                                            gap_size=None):
+    def generate_single_realization_dataset(self, means=None, sigmas=None, heights=None, gap_size=None):
         mask = self.generate_gap_mask(gap_size=gap_size)
-        *data, = self.generate_light_curves(mask=mask, means=means, sigmas=sigmas, heights=heights,
-                                            noise_level=noise_level)
+        *data, = self.generate_light_curves(mask=mask, means=means, sigmas=sigmas, heights=heights)
         columns = ["time", "A", "B", "sigmaA", "sigmaB"]
         df = pd.DataFrame(data=np.array(data).T, columns=columns)
         return df
