@@ -79,7 +79,8 @@ class DataGenerator:
     def generate_gaussian_signal_parameters(self):
         means = np.random.random(20) * self.tmax
         sigmas = np.random.random(20) * (self.tmax / 4)
-        heights = 1 + 5 * np.random.random(20)
+        # heights = 1 + 5 * np.random.random(20)
+        heights = np.ones(means.shape)
         self.gaussian_means = means.copy()
         self.gaussian_sigmas = sigmas.copy()
         self.gaussian_peak_heights = heights.copy()
