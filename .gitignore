@@ -1,5 +1,13 @@
-# Custom
-*.ipynb
+# custom
+.DS_Store
+.idea
+
+# jupyter
+*.ipynb*
+
+# documentation
+html/
+latex/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
