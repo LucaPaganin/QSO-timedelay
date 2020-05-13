@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 16:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -491,6 +491,8 @@ LaTeX Font Warning: Font shape `OMS/pplx/m/n' undefined
 
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
 (Font)              Font shape `T1/pplx/b/n' tried instead on input line 94.
+LaTeX Font Info:    Font shape `T1/pplx/bx/it' in size <9> not available
+(Font)              Font shape `T1/pplx/b/it' tried instead on input line 94.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -532,13 +534,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
- 9332 strings out of 492995
- 145707 string characters out of 6132703
- 275598 words of memory out of 5000000
- 12585 multiletter control sequences out of 15000+600000
- 69651 words of font info for 204 fonts, out of 8000000 for 9000
+ 9358 strings out of 492995
+ 145963 string characters out of 6132703
+ 276098 words of memory out of 5000000
+ 12588 multiletter control sequences out of 15000+600000
+ 72812 words of font info for 222 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,311b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,43p,817b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -546,12 +548,13 @@ ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
 e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
 2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist
-/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
-type1/urw/palatino/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 92438 bytes).
+/fonts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
+urw/palatino/uplri8a.pfb>
+Output written on article_2.pdf (3 pages, 102823 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  14 named destinations out of 1000 (max. 500000)
- 61489 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 62001 words of extra memory for PDF output out of 74296 (max. 10000000)
 
