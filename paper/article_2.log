@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 16:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -536,11 +536,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
 Here is how much of TeX's memory you used:
  9358 strings out of 492995
  145963 string characters out of 6132703
- 276098 words of memory out of 5000000
+ 275204 words of memory out of 5000000
  12588 multiletter control sequences out of 15000+600000
  72812 words of font info for 222 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,817b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,43p,922b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -551,7 +551,7 @@ mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts
 /type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
 urw/palatino/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 102823 bytes).
+Output written on article_2.pdf (3 pages, 102936 bytes).
 PDF statistics:
  93 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream
