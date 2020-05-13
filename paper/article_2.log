@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 15:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  13 MAY 2020 16:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -532,13 +532,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
  ) 
 Here is how much of TeX's memory you used:
- 9344 strings out of 492995
- 145816 string characters out of 6132703
- 275314 words of memory out of 5000000
+ 9332 strings out of 492995
+ 145707 string characters out of 6132703
+ 275598 words of memory out of 5000000
  12585 multiletter control sequences out of 15000+600000
- 70281 words of font info for 213 fonts, out of 8000000 for 9000
+ 69651 words of font info for 204 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,244b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,43p,311b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -548,7 +548,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
 mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/urw/palatino/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 92076 bytes).
+Output written on article_2.pdf (3 pages, 92438 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
