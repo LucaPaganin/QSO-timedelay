@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  18 JUN 2020 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  19 JUN 2020 09:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -510,31 +510,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--159
  []
 
 [2]
-Underfull \hbox (badness 1748) in paragraph at lines 171--175
+Underfull \hbox (badness 1748) in paragraph at lines 175--179
 []\T1/pplx/m/n/10 (+20) Figueredo, A. J.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
 [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
  (./article_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 184.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
 Package rerunfilecheck Info: File `article_2.out' has not changed.
 (rerunfilecheck)             Checksum: B80D3E5E100053B48E7649ED8176694E;302.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
  ) 
 Here is how much of TeX's memory you used:
- 9345 strings out of 492995
- 145765 string characters out of 6132703
- 276205 words of memory out of 5000000
- 12582 multiletter control sequences out of 15000+600000
+ 9347 strings out of 492995
+ 145786 string characters out of 6132703
+ 276234 words of memory out of 5000000
+ 12583 multiletter control sequences out of 15000+600000
  64723 words of font info for 215 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,12n,43p,922b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -549,10 +549,10 @@ st/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
 1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/p
 alatino/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 107091 bytes).
+Output written on article_2.pdf (3 pages, 109327 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
+ 99 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
  56881 words of extra memory for PDF output out of 61914 (max. 10000000)
 
