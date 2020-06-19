@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  19 JUN 2020 12:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  19 JUN 2020 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -494,6 +494,26 @@ LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `T1/pplx/bx/it' in size <9> not available
 (Font)              Font shape `T1/pplx/b/it' tried instead on input line 94.
 
+Underfull \hbox (badness 1102) in paragraph at lines 100--108
+\T1/pplx/m/n/10 (+20) in ad-di-tion to the min-i-mal 6 pa-ram-e-ters
+ []
+
+
+Underfull \hbox (badness 1852) in paragraph at lines 100--108
+\T1/pplx/m/n/10 (+20) re-sults from the H0LiCOW col-lab-o-ra-tion,
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 100--108
+\T1/pplx/m/n/10 (+20) lens-ing: firstly sug-gested by Refs-dal [[]],
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--108
+
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
@@ -501,49 +521,52 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <9> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 131.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 133.
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--162
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
 \T1/pplx/m/n/10 (+20) A state-ment re-quir-ing ci-ta-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 160--162
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
 \T1/pplx/m/n/10 (+20) [[]]. Lorem ip-
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 180--182
 []\T1/pplx/m/n/10 (+20) The COS-MO-GRAIL Col-lab-o-ra-tion,
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 186--190
+Underfull \hbox (badness 1748) in paragraph at lines 188--192
 []\T1/pplx/m/n/10 (+20) Figueredo, A. J.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
  (./article_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `article_2.out' has not changed.
 (rerunfilecheck)             Checksum: B80D3E5E100053B48E7649ED8176694E;302.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 195.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 9367 strings out of 492995
- 145966 string characters out of 6132703
- 276300 words of memory out of 5000000
+ 9361 strings out of 492995
+ 145921 string characters out of 6132703
+ 277300 words of memory out of 5000000
  12585 multiletter control sequences out of 15000+600000
- 66971 words of font info for 229 fonts, out of 8000000 for 9000
+ 66623 words of font info for 225 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,922b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,12n,43p,922b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -556,7 +579,7 @@ onts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
 pe1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palat
 ino/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 117650 bytes).
+Output written on article_2.pdf (3 pages, 118451 bytes).
 PDF statistics:
  107 PDF objects out of 1000 (max. 8388607)
  90 compressed objects within 1 object stream
