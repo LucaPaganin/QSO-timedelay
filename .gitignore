@@ -2,9 +2,6 @@
 .DS_Store
 .idea
 
-# jupyter
-*.ipynb*
-
 # documentation
 html/
 latex/

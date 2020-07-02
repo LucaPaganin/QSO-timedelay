@@ -1,4 +1,4 @@
-import data_generator as dg
+from . import data_generator as dg
 
 t_max = 4000
 n_samples = 100
