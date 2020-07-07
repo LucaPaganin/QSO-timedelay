@@ -11,7 +11,7 @@ gap_size = 3
 relative_err = 0.02
 
 datagen = dg.DataGenerator(t_max=t_max,
-                           n_samples=n_samples,
+                           sampling_rate=n_samples,
                            delay=delay,
                            seed=seed,
                            image_ratio=image_ratio,

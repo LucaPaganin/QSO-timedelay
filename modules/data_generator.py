@@ -15,8 +15,8 @@ class DataGenerator:
     :type t_max: float
     :param delay: value of the time delay, unit is days
     :type delay: float
-    :param n_samples: number of samples
-    :type n_samples: int
+    :param sampling_rate: sampling rate in days^-1
+    :type sampling_rate: float
     :param seed: seed of numpy random generator
     :type seed: float
     :param n_gaps: number of gaps to simulate in artificial data
@@ -34,8 +34,8 @@ class DataGenerator:
     def __init__(self,
                  t_max=None,
                  delay=None,
-                 n_samples=None,
-                 image_ratio=1. / 1.44,
+                 sampling_rate=None,
+                 image_ratio=1.0,
                  seed=0,
                  n_gaps=None,
                  gap_size=None,
@@ -48,12 +48,7 @@ class DataGenerator:
         if delay is None:
             raise ParameterError("Time delay cannot be None")
         self.delay = delay
-        if n_samples is None or n_samples < 0 or n_samples == 0:
-            raise ParameterError("Number of samples cannot be None, negative or zero")
-        try:
-            self.n_samples = int(n_samples)
-        except:
-            raise Exception(f"Cannot cast variable {n_samples} as an integer")
+        self.sampling_rate = sampling_rate
         if relative_err is None or relative_err < 0:
             raise ParameterError("Relative error cannot be none or negative")
         self.relative_err = relative_err
@@ -62,6 +57,7 @@ class DataGenerator:
         self.image_ratio = image_ratio
 
         np.random.seed(seed)
+        self.n_samples = int(self.t_max * self.sampling_rate)
         self.t_regular = np.linspace(0, self.t_max, num=self.n_samples)
         self.t_domain = self.t_regular.copy()
         self.n_gaps = n_gaps
@@ -89,7 +85,7 @@ class DataGenerator:
         return means, sigmas, heights
 
     def generate_noisy_time_domain(self):
-        sampling_noise = (np.random.random(len(self.t_regular)) - 0.5) * (self.t_max / self.n_samples)
+        sampling_noise = (np.random.random(self.n_samples) - 0.5) * (self.t_max / self.n_samples)
         t_domain = self.t_regular + sampling_noise
         self.t_domain = t_domain.copy()
         return t_domain
