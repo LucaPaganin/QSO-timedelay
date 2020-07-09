@@ -1,11 +1,12 @@
 import h5py
 import numpy as np
-from modules import regression as rg
 import pandas as pd
 import time
 import sys
 
 sys.path.insert(0, '..')
+
+from modules import regression as rg
 
 
 def main():
