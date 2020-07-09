@@ -1,0 +1,55 @@
+%------------------------Integralismo-MASTERFILE----------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CLASS
+%----------------------------------------------------------------------------------------
+
+\documentclass[leqno,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PREAMBLE
+%----------------------------------------------------------------------------------------
+
+\usepackage{preamble}
+
+
+\title{QSO notes}
+\author{Luca Paganin}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\usepackage{csquotes}
+\usepackage[style=numeric-comp,useprefix,hyperref,backend=biber,sorting=none,maxbibnames=10]{biblatex}
+\addbibresource{QSO-time-delay.bib}
+
+%----------------------------------------------------------------------------------------
+%	ACTIVE FILES																							%<------------------------ACTIVE FILES											
+%----------------------------------------------------------------------------------------
+
+\includeonly{
+artificial_data
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\include{artificial_data}
+
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{\bibname}
+\nocite{*}
+\printbibliography
+
+\end{document}

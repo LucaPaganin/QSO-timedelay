@@ -1,0 +1,128 @@
+\section{Structure function method}
+
+\subsection{Structure function estimation from data}
+
+Like in \cite{Press1992} one has to estimate from the data the so-called structure function
+
+\begin{equation}
+V(\tau) \equiv \frac{1}{2} \left \langle \left [ s(t+\tau) - s(t) \right ]^2  \right \rangle
+\end{equation}
+
+This is related to the covariance (or autocorrelation function) of the time serie (see \cite{Press1992}) for all details)
+
+\begin{equation}
+C(\tau) = \langle s(t)^2 \rangle - V(\tau)
+\end{equation}
+
+\subsection{Generating light curves from data}
+
+\subsubsection{Eigenvalue decomposition}
+
+Consider a given collection of $N$ observation times $t_1, \dots , t_N$. Construct the augmented observation time list appending to the end a the collection of the delayed observation times:
+
+\[
+t_1, \dots , t_N, t_1 - \Delta t, \dots, t_N - \Delta t
+\]
+
+with an assumed known delay $\Delta t$. After that use the estimated structure function to build a $2N \times 2N$ covariance matrix
+
+\begin{equation}
+C_{ij} = \langle s(t)^2 \rangle - V(\tau_{ij})
+\end{equation}
+
+with $\tau_{ij}$ being the lag matrix defined by
+
+\begin{equation}
+\tau_{ij} = |t_i - t_j|, \quad i,j = 1, \dots , 2N
+\end{equation}
+
+with the relation
+
+\begin{equation}
+t_{i+N} = t_i - \Delta t
+\end{equation}
+
+What they say in \cite{Press1992} is to perform the eigenvalue decomposition of the covariance matrix $C$
+
+\begin{equation}\label{eq:eigen-cov-decomp}
+C = Z^\dagger \Lambda Z
+\end{equation}
+
+with $\Lambda$ being the diagonal matrix with the eigenvalues
+
+\[
+\Lambda = \mathrm{diag} \left ( \lambda_1, \dots, \lambda_{2N} \right )
+\]
+ 
+ and $Z$ the orthogonal matrix which diagonalize $C$, the rows of $Z$ being the eigenvectors of $C$. After that one can generate a dataset with the following prescription
+ 
+\begin{equation}
+y_i = \sum_{i=1}^{2N} Z_{ij} \sqrt{\lambda_j} r_j + \langle n_i^2 \rangle^{1/2} r_i
+\end{equation}
+
+with $ \langle n_i^2 \rangle = e_i^2$ the squares of the errors on the data, and $r_i$, $r_j$ are independent uncorrelated gaussian random numbers with zero mean and unit variance. However we have tried this method on real data, and what it happens is that is not numerically stable. The eigenvalues span many orders of magnitude and this causes data with very high unrealistic peaks.
+
+\subsubsection{Cholesky and Eigenvalue decompositions}
+
+Assuming that $C$ is a real symmetric and positive definite matrix, it can be Cholesky decomposed
+
+\begin{equation}
+C = L L^{\dagger}
+\end{equation}
+
+with $L$ being a lower triangular matrix called the \emph{Cholesky factor} of $C$. We can show that there is a relation between the CHolseky and eigenvalue factorizations of a given matrix. First observe that, from the eigenvalue decomposition:
+
+\begin{align*}
+C = Z^\dagger \Lambda Z = Z^\dagger \sqrt{\Lambda} \sqrt{\Lambda} Z = \left ( \sqrt{\Lambda} Z \right )^{\dagger} \sqrt{\Lambda} Z
+\end{align*}
+
+with $\sqrt{\Lambda}$ being a diagonal matrix that multiplied by itself gives $\Lambda$, i.e. a diagonal matrix with the square roots of the eigenvalues as its entries. Now remember that any real square matrix can be factorized into a unitary matrix $Q$ and an upper triangular matrix $R$, the so-called $QR$-factorization. Doing this on the matrix $\sqrt{\Lambda} Z$ we have
+
+\begin{equation}
+\sqrt{\Lambda} Z = Q R
+\end{equation}
+
+But now we can rerite the \eqref{eq:eigen-cov-decomp} as
+
+\[
+C = (QR)^{\dagger} QR = R^{\dagger} Q^{\dagger} Q R = R^{\dagger} R 
+\]
+
+being $Q$ unitary. Finally, since $R$ is upper triangular, it conjugate transposed 
+
+\begin{align*}
+L = R^{\dagger}
+\end{align*}
+ 
+is lower triangular. Therefore we have obtained the CHolesky decompotision of $C$
+
+\begin{equation}
+ C = L L^{\dagger}
+\end{equation} 
+
+with
+
+\[
+L = \left ( \sqrt{\Lambda} Z \right )^{\dagger} Q
+\]
+
+\subsubsection{Reformulating the prescription}
+
+Using the results of the previous section we can rewrite the prescription for the data generation (leave outside the noise for now)
+
+\begin{equation}
+\bv{y} = \left ( Z \sqrt{\Lambda} \right ) \bv{r} 
+\end{equation}
+
+Instead of using $Z$ use $Z^{\dagger}$ and obtain 
+
+\begin{align*}
+Z^{\dagger} \sqrt{\Lambda} = \left ( \sqrt{\Lambda} Z\right )^{\dagger} = L Q^{\dagger}
+\end{align*}
+
+The we can substitute the eigenvalue decomposition with the Cholesky one, which is numerically more stable. For simplicity we simply write
+
+\begin{equation}
+\bv{y} = L \bv{r}
+\end{equation}
+

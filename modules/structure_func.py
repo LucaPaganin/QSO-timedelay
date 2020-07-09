@@ -25,3 +25,5 @@ def estimate_structure_func_from_data(t, y, err_y) -> Tuple[np.ndarray]:
     tau_binned = stats.binned_statistic(tau_vals, tau_vals, bins=100)[0]
     v_binned = stats.binned_statistic(tau_vals, v_vals, bins=100)[0]
     return tau_binned, v_binned
+
+

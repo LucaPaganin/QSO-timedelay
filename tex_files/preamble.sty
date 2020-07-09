@@ -1,0 +1,78 @@
+\ProvidesPackage{preamble}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amsthm,bm,amssymb,mathrsfs,dsfont}
+\usepackage{hyperref,color}
+\usepackage{relsize}
+\usepackage{graphicx,subfigure}
+\usepackage{verbatim}
+\graphicspath{{Immagini/}}
+\usepackage{tensor,physics,slashed,siunitx}
+\usepackage{booktabs,multirow}
+\setlength\parindent{0pt}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+
+\newcommand{\mt}[1]{\mathcal{#1}}
+\newcommand{\de}{\partial}
+\newcommand{\divr}{\nabla\cdot}
+\newcommand{\rot}{\nabla\times}
+\newcommand{\grd}{\bv{\nabla}}
+\newcommand{\iden}{\mathds{1}}
+\newcommand{\bv}[1]{\mathbf{#1}}
+\newcommand{\bint}{\mathop{\mathlarger{\int}}}
+\newcommand{\elmat}[3]{\bra{#1}#2\ket{#3}}
+\newcommand{\dede}[2]{\frac{\de #1}{\de #2}}
+\newcommand{\arwmap}{\; \longrightarrow \;}
+\newcommand{\trueprod}[2]{\displaystyle\prod_{\substack{#1}}^{#2}}
+\newcommand{\ifoif}{\; \Longleftrightarrow \;}
+\newcommand{\evin}[1]{\bigr |_{#1}}
+\newcommand{\Vbas}{\lbrace \bv{e}_i \rbrace}
+\newcommand{\Vdbas}{\lbrace \bv{e}_j^* \rbrace}
+\newcommand{\ex}{\hat{\bv{x}}}
+\newcommand{\ey}{\hat{\bv{y}}}
+\newcommand{\ez}{\hat{\bv{z}}}
+\newcommand{\er}{\hat{\bv{r}}}
+\newcommand{\etheta}{\hat{\bm{\theta}}}
+\newcommand{\ephi}{\hat{\bm{\phi}}}
+\newcommand{\Dilog}{\mbox{Li}_2}
+\newcommand{\sinc}{\text{sinc}}
+\newcommand{\Resd}[2]{\mbox{Res} \left \lbrace #1, #2 \right \rbrace}
+\newcommand{\CPV}[3]{\mathcal{P} \int_{#1}^{#2} #3 }
+
+\def\Xint#1{\mathchoice
+   {\XXint\displaystyle\textstyle{#1}}%
+   {\XXint\textstyle\scriptstyle{#1}}%
+   {\XXint\scriptstyle\scriptscriptstyle{#1}}%
+   {\XXint\scriptscriptstyle\scriptscriptstyle{#1}}%
+   \!\int}
+\def\XXint#1#2#3{{\setbox0=\hbox{$#1{#2#3}{\int}$}
+     \vcenter{\hbox{$#2#3$}}\kern-.5\wd0}}
+\def\ddashint{\Xint=}
+\def\dashint{\Xint-}
+
+
+
+
+\theoremstyle{definition}
+\newtheorem{exrc}{Exercise}
+\newtheorem{sol}{Solution}
+
+
+\newcommand{\eq}[1]{Eq.~\eqref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\newenvironment{sistema}%
+  {\left\lbrace \begin{array}{@{}l@{}}}%
+  {\end{array}\right.}
+  
+  \hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc = all,
+    linkcolor=black,  %choose some color if you want links to stand out
+    citecolor=blue
+}
+
