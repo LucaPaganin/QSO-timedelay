@@ -26,7 +26,7 @@ def main():
         true_delays.append(true_delay)
         estimated_delays.append(estimated_delay)
 
-    with open('results.txt', 'w') as f:
+    with open('../aux/results.txt', 'w') as f:
         f.write('true_delay \t estimated_delay\n')
         for td, ed in zip(true_delays, estimated_delays):
             f.write(f'{td:.2f} \t {ed:.2f}\n')
