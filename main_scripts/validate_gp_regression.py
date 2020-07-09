@@ -27,13 +27,13 @@ def main():
         y1 = data[k]['y'][()]
         y2 = data[k]['y_delayed'][()]
         true_delay = data[k]['delay'][()]
-        print(f'True delay: {true_delay}')
+        logger.info(f'True delay: {true_delay}')
 
         t0 = time.time()
         estimated_delay = rg.estimate_delay(t_dom, y1, y2, errA, errA)
         tf = time.time()
-        print(f'Estimated delay: {estimated_delay}')
-        print(f'Elapsed time {tf-t0} s')
+        logger.info(f'Estimated delay: {estimated_delay}')
+        logger.info(f'Elapsed time {tf-t0} s')
 
         true_delays.append(true_delay)
         estimated_delays.append(estimated_delay)
