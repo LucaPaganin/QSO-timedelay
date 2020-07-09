@@ -3,13 +3,19 @@ import numpy as np
 import pandas as pd
 import time
 import sys
+import logging
 
 sys.path.insert(0, '..')
 
 from modules import regression as rg
+from modules.utils import configure_logger
+
+logger = logging.getLogger()
 
 
 def main():
+    logfile = 'validate_GP_regression.log'
+    configure_logger(logger, logfile)
     data = h5py.File('../aux/RXJ1131_random_delays_0_30.h5', 'r')
     t_dom = data['t_domain'][()]
     # A = data['original_data']['A'][()]
