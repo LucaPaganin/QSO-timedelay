@@ -21,48 +21,17 @@
 
 \documentclass[twoside,twocolumn]{article}
 
-\usepackage{blindtext} % Package to generate dummy text throughout this template 
+\usepackage{preamble}
 
-\usepackage[sc]{mathpazo} % Use the Palatino font
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-\linespread{1.05} % Line spacing - Palatino needs more space between lines
-\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+%-------------------
+%	BIBLIOGRAPHY
+%-------------------
 
-\usepackage[english]{babel} % Language hyphenation and typographical rules
+\usepackage[style=numeric-comp,useprefix,hyperref,backend=biber,sorting=none,maxbibnames=10]{biblatex}
+\addbibresource{bib_by_hand.bib}
+\addbibresource{QSO_timedelay.bib}
 
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
-\usepackage{booktabs} % Horizontal rules in tables
 
-\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
-
-\usepackage{enumitem} % Customized lists
-\setlist[itemize]{noitemsep} % Make itemize lists more compact
-
-\usepackage{abstract} % Allows abstract customization
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
-
-\usepackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
-\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
-
-\usepackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
-\fancyfoot[RO,LE]{\thepage} % Custom footer text
-
-\usepackage{titling} % Customizing the title section
-
-\usepackage{hyperref} % For hyperlinks in the PDF
-
-% LINE NUMBERS - REMOVE THEM AT THE END 
-\usepackage{lineno}
-\linenumbers
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -103,19 +72,19 @@
 \section{Introduction}
 In the last years, the precision of the Planck experiment [cita], whose task was to analyse the Cosmic Microwave Background (CMB) anisotropies, has allowed to fully test our standard cosmological model ($\Lambda$CDM) which assumes the existence of Dark Energy ($\Lambda$) and Cold Dark Matter (CDM). In particular, in addition to the minimal 6 parameters describing $\Lambda$CDM, the CMB anisotropies allow to indirectly constrain other parameters, such as the current expansion rate of the Universe, $H_0$, whose inference strongly depends on the assumed cosmological model. For example, relaxing the spatial flatness hypothesis of our Universe or the constant equation of state for the dark energy, would impact the $H_0$ estimation.
 \\
-In parallel, the are other independent methods to measure $H_0$, such as the distance ladder [cita], water masers [cita], the time delay between multiple images of gravitational lensed quasars \cite{h0licow_I} and, gravitational waves [cita]. 
+In parallel, the are other independent methods to measure $H_0$, such as the distance ladder [cita], water masers [cita], the time delay between multiple images of gravitational lensed quasars \cite{H0licow_I} and, gravitational waves [cita]. 
 \\
-The highest precision reached by Plank has however shown a tension in the value of $H_0$ with respect to the distance ladder measurements, which has been further enhanced by the recent gravitational lensing results from the H0LiCOW collaboration \cite{h0licow_XIII}, whose measured value is $H_0=73.3^{+1.7}_{-1.8}$ km s$^{-1}$ Mpc$^{-1}$, in agreement with the distance ladder results and, together with them, with a $5.3 \, \sigma$ tension with the Planck analysis assuming flat $\Lambda$CDM.
+The highest precision reached by Plank has however shown a tension in the value of $H_0$ with respect to the distance ladder measurements, which has been further enhanced by the recent gravitational lensing results from the H0LiCOW collaboration \cite{H0licow_XIII}, whose measured value is $H_0=73.3^{+1.7}_{-1.8}$ km s$^{-1}$ Mpc$^{-1}$, in agreement with the distance ladder results and, together with them, with a $5.3 \, \sigma$ tension with the Planck analysis assuming flat $\Lambda$CDM.
 \\
-In this paper we will focus on the gravitational lensing: firstly suggested by Refsdal \cite{refsdal}, this method directly relates the time delays between multiple images of the same source produced by a lensing object with $H_0$ in the form $\Delta_T \propto 1/H_0$. This method depends on the matter distribution in the source light trajectory, namely the lensing object (such as a galaxy) and objects along the line of sight, and it has a weaker dependence on the cosmological parameters if compared to the CMB analyses. In particular, it depends on the matter density $\Omega_m$, the dark energy density $\Omega_\Lambda$, the curvature parameter $\Omega_k$ and the dark energy equation of state $\omega$ [cita].
+In this paper we will focus on the gravitational lensing: firstly suggested by Refsdal \cite{Refsdal1964}, this method directly relates the time delays between multiple images of the same source produced by a lensing object with $H_0$ in the form $\Delta_T \propto 1/H_0$. This method depends on the matter distribution in the source light trajectory, namely the lensing object (such as a galaxy) and objects along the line of sight, and it has a weaker dependence on the cosmological parameters if compared to the CMB analyses. In particular, it depends on the matter density $\Omega_m$, the dark energy density $\Omega_\Lambda$, the curvature parameter $\Omega_k$ and the dark energy equation of state $\omega$ [cita].
 \\
-This method requires a long photometric monitoring of the multiple images of the source, of the order of years, and a good temporal sampling, to be able to observe the photometric variations of the source. In this regard, the COSMOGRAIL collaboration has been monitoring 18 strongly lensed quasars since 2004 \cite{cosmograil} with 1-2 m size telescopes. And the H0LiCOW collaboration has used part of these data to evaluate $H_0$ with a precision of $2.4\%$ \cite{h0licow_XIII}. 
+This method requires a long photometric monitoring of the multiple images of the source, of the order of years, and a good temporal sampling, to be able to observe the photometric variations of the source. In this regard, the COSMOGRAIL \cite{Cosmograil2020} collaboration has been monitoring 18 strongly lensed quasars since 2004  with 1-2 m size telescopes. And the H0LiCOW collaboration has used part of these data to evaluate $H_0$ with a precision of $2.4\%$ \cite{H0licow_XIII}. 
 \\
-Improving the precision in the $H_0$ evaluation will help in finding the reason of this big discrepancy, and, it would also have a big impact in the results of the next cosmological surveys, up to a 40$\%$ improvement if $H_0$ is independently known with $1\%$ precision \cite{weinberg_euclid}.
+Improving the precision in the $H_0$ evaluation will help in finding the reason of this big discrepancy, and, it would also have a big impact in the results of the next cosmological surveys, up to a 40$\%$ improvement if $H_0$ is independently known with $1\%$ precision \cite{Weinberg2013}.
 \\
 ...
 \\
-The paper is organised as follows. In Sec. 2 we describe the Monte Carlo simulations used in our work to estimate the time delays between light curves. In Sec. 3 we describe the statistical methods to derive time delays and the corresponding errors, where we will also introduce deep gaussian processes. In Sec. 4 we will show the performances of the previous methods applied both on our Monte Carlo simulations and on the real data from COSMOGRAIL \cite{cosmograil}. In Sec. 5 we will discuss about the color variability of quasars. In sec. 6 we will describe our proposed method to estimate the time delay for not resolved lensed quasars by using the color information. And finally, in Sec. 7 we will show the results of the proposed method.
+The paper is organised as follows. In Sec. 2 we describe the Monte Carlo simulations used in our work to estimate the time delays between light curves. In Sec. 3 we describe the statistical methods to derive time delays and the corresponding errors, where we will also introduce deep gaussian processes. In Sec. 4 we will show the performances of the previous methods applied both on our Monte Carlo simulations and on the real data from COSMOGRAIL \cite{Cosmograil2020}. In Sec. 5 we will discuss about the color variability of quasars. In sec. 6 we will describe our proposed method to estimate the time delay for not resolved lensed quasars by using the color information. And finally, in Sec. 7 we will show the results of the proposed method.
 
 
 %------------------------------------------------
@@ -187,6 +156,12 @@ A statement requiring citation \cite{Figueredo:2009dg}.
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
 
+\addcontentsline{toc}{chapter}{\bibname}
+\nocite{*}
+\onecolumn{\printbibliography}
+
+\begin{comment}
+
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
 
 \bibitem{h0licow_I}
@@ -210,6 +185,8 @@ D. Weinberg et al.,
 \textit{Phys. Rep., 530, 87} (2013)
 
 \end{thebibliography}
+
+\end{comment}
 
 %----------------------------------------------------------------------------------------
 
