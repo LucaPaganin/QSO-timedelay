@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  23 JUL 2020 10:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  23 JUL 2020 10:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -500,87 +500,73 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 139.
-
-
 Underfull \vbox (badness 1242) has occurred while \output is active []
 
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 157.
+(hyperref)                removing `math shift' on input line 158.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\Delta' on input line 157.
+(hyperref)                removing `\Delta' on input line 158.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 157.
+(hyperref)                removing `math shift' on input line 158.
 
 
 LaTeX Warning: Citation `Figueredo:2009dg' on page 2 undefined on input line 16
-8.
+9.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 190--192
+Underfull \hbox (badness 10000) in paragraph at lines 191--193
 []\T1/pplx/m/n/10 (+20) The COS-MO-GRAIL Col-lab-o-ra-tion,
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 201.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
 [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 201.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
  (./article_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 201.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 201.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 202.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 202.
+Package rerunfilecheck Info: File `article_2.out' has not changed.
+(rerunfilecheck)             Checksum: 64E677BCB69D860B996AEB7B45FFC2EF;564.
 
-
-Package rerunfilecheck Warning: File `article_2.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `article_2.out':
-(rerunfilecheck)             Before: 7F5AAA2CE8C745D92A861E7AF5B81E1E;478
-(rerunfilecheck)             After:  64E677BCB69D860B996AEB7B45FFC2EF;564.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 201.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 202.
  ) 
 Here is how much of TeX's memory you used:
  9389 strings out of 492995
- 146093 string characters out of 6132703
+ 146090 string characters out of 6132703
  277274 words of memory out of 5000000
- 12578 multiletter control sequences out of 15000+600000
+ 12579 multiletter control sequences out of 15000+600000
  66549 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,13n,43p,922b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.6.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texli
-ve/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/
-2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/20
-17/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2017/texmf-
-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2017/texmf-dist/fon
-ts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
-1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
-palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatin
-o/uplri8a.pfb>
-Output written on article_2.pdf (3 pages, 120435 bytes).
+ 37i,13n,43p,922b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/
+2017/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2017/
+texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2017/texmf-dist/f
+onts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/urw/palatino/uplbi8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/ur
+w/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palat
+ino/uplri8a.pfb>
+Output written on article_2.pdf (3 pages, 120519 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 56377 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 122 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 21 named destinations out of 1000 (max. 500000)
+ 56385 words of extra memory for PDF output out of 61914 (max. 10000000)
 
