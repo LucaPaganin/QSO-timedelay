@@ -4,6 +4,7 @@
 aux
 *.h5
 .ipynb_checkpoints
+*.pdf
 
 # documentation
 html/
