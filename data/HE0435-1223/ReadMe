@@ -1,0 +1,81 @@
+J/A+A/528/A42  VRi light curves of the lensed QSO HE 0435-1223    (Ricci+, 2011)
+================================================================================
+Flux and color variations of the quadruply imaged quasar HE 0435-1223.
+   Ricci D., Poels J., Elyiv A., Finet F., Sprimont P.G., Anguita T., Bozza V.,
+   Browne P., Burgdorf M., Calchi Novati S., Dominik M., Dreizler S.,
+   Glitrup M., Grundahl F., Harps K., Hessman F., Hinse T.C., Hornstrup A.,
+   Hundertmark M., Jorgensen U.G., Liebig C., Maier G., Mancini L., Masi G.,
+   Mathiasen M., Rahvar S., Scarpetta G., Skottfelt J., Snodgrass C.,
+   Southworth J., Teuber J., Thone C.C., Wambsganss J., Zimmer F., Zub M.,
+   Surdej J.
+  <Astron. Astrophys. 528, A42 (2011)>
+  =2011A&A...528A..42R
+================================================================================
+ADC_Keywords: Gravitational lensing; QSOs ; Photometry
+Keywords: quasar: general - gravitational lensing - techniques: photometric
+
+Abstract:
+    We present VRi photometric observations of the quadruply imaged
+    quasar HE0435-1223, carried out with the Danish 1.54m telescope at the
+    La Silla Observatory. Our aim was to monitor and study the magnitudes
+    and colors of each lensed component as a function of time.
+
+Description:
+    Tables contain the light curves of the 4 components of the quasar, in
+    the V, R, and i bands.
+
+Objects:
+    ------------------------------------------------------
+       RA   (2000)   DE      Designation(s)
+    ------------------------------------------------------
+    04 38 14.8   -12 23 14   HE 0435-1223 = HE 0435-1223
+    ------------------------------------------------------
+
+File Summary:
+--------------------------------------------------------------------------------
+ FileName   Lrecl  Records   Explanations
+--------------------------------------------------------------------------------
+ReadMe         80        .   This file
+table5.dat    100       43   Light curves in the V filter
+table6.dat    100       46   Light curves in the R filter
+table7.dat    100       37   Light curves in the i filter
+--------------------------------------------------------------------------------
+
+See also:
+ J/ApJ/662/62  : Optical monitoring of SDSS J1004+4112 (Fohlmeister+, 2007)
+ J/A+A/420/447 : VRI photometry of lensed quasar QSO B2237+0305 (Vakulik+, 2004)
+ J/A+A/391/481 : R-band photometry of SBS1520+530 (Burud+, 2002)
+
+Byte-by-byte Description of file: table5.dat table6.dat table7.dat
+--------------------------------------------------------------------------------
+   Bytes Format Units   Label  Explanations
+--------------------------------------------------------------------------------
+   1-  9  F9.1  d       JD     Julian Date
+      11  A1    ---     Filt   [VRi] Filter
+  13- 17  F5.2  mag     mag1A  Magnitude of component A in filter,
+                               differential imaging
+  19- 22  F4.2  mag   e_mag1A  Error on magAdif
+  24- 28  F5.2  mag     mag1B  Magnitude of component B in filter,
+                               differential imaging
+  30- 33  F4.2  mag   e_mag1B  Error on magBdif
+  35- 39  F5.2  mag     mag1C  Magnitude of component C in filter,
+                               differential imaging
+  41- 44  F4.2  mag   e_mag1C  Error on magCdif
+  46- 50  F5.2  mag     mag1D  Magnitude of component D in filter,
+                               differential imaging
+  52- 55  F4.2  mag   e_mag1D  Error on magDdif
+  58- 62  F5.2  mag     mag2A  Magnitude of component A in filter, PSF fitting
+  64- 67  F4.2  mag   e_mag2A  Error on magApsf
+  69- 73  F5.2  mag     mag2B  Magnitude of component B in filter, PSF fitting
+  75- 78  F4.2  mag   e_mag2B  Error on magBpsf
+  80- 84  F5.2  mag     mag2C  Magnitude of component C in filter, PSF fitting
+  86- 89  F4.2  mag   e_mag2C  Error on magCpsf
+  91- 95  F5.2  mag     mag2D  Magnitude of component D in filter, PSF fitting
+  97-100  F4.2  mag   e_mag2D  Error on magDpsf
+--------------------------------------------------------------------------------
+
+Acknowledgements:
+    Davide Ricci, ricci(at)astro.ulg.ac.be
+
+================================================================================
+(End)                                        Patricia Vannier [CDS]  21-Jan-2011
