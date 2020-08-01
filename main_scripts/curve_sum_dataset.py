@@ -75,13 +75,13 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay):
 
 
 def main(*args):
-    logfile = open('logfile_curvesum.log', 'w')
     N_MC = 1000
     file_path = Path(args[0])
     workdir = Path(args[1])
 
     os.chdir(workdir)
 
+    logfile = open('logfile_curvesum.log', 'w')
     logfile.write('Reading data\n')
     data = pd.read_table(file_path)
     t = data['mhjd'].to_numpy(dtype=np.float64)
@@ -133,11 +133,13 @@ def main(*args):
 
     ydata = true_delays
 
+    logfile.write('Writing output to file\n')
     file_name = f'HE0435_NMC_{N_MC}_curvesum'
     hf = h5py.File(file_name, 'w')
     hf.create_dataset(name='X', data=Xdata, compression='gzip', compression_opts=9)
     hf.create_dataset(name='y', data=ydata, compression='gzip', compression_opts=9)
     hf.close()
+    logfile.close()
 
 
 if __name__ == '__main__':
