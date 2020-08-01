@@ -33,7 +33,7 @@ def spline_sf(tau, v):
     return spline
 
 
-def compute_lags_matrix(t) -> np.ndarray:
+def compute_lags_matrix(t):
     N = len(t)
     t_row_repeated = np.repeat(t[np.newaxis, :], N, axis=0)
     t_col_repeated = np.repeat(t[:, np.newaxis], N, axis=1)
@@ -41,7 +41,7 @@ def compute_lags_matrix(t) -> np.ndarray:
     return tau
 
 
-def estimate_structure_func_from_data(t, y, err_y) -> Tuple[np.ndarray]:
+def estimate_structure_func_from_data(t, y, err_y):
     N = len(t)
     y_row_repeated = np.repeat(y[np.newaxis, :], N, axis=0)
     y_col_repeated = np.repeat(y[:, np.newaxis], N, axis=1)
