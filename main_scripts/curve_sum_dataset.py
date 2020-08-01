@@ -75,12 +75,14 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay):
 
 
 def main(*args):
+    logfile = open('logfile_curvesum.log', 'w')
     N_MC = 1000
     file_path = Path(args[0])
     workdir = Path(args[1])
 
     os.chdir(workdir)
 
+    logfile.write('Reading data\n')
     data = pd.read_table(file_path)
     t = data['mhjd'].to_numpy(dtype=np.float64)
     A = data['mag_A'].to_numpy(dtype=np.float64)
@@ -91,13 +93,16 @@ def main(*args):
     gp = GaussianProcessRegressor(kernel=kernel, alpha=errA ** 2, n_restarts_optimizer=10,
                                   optimizer='fmin_l_bfgs_b', normalize_y=True)
 
+    logfile.write('Fitting GP to data\n')
     gp.fit(np.expand_dims(t, 1), A)
 
     N = 2000
     support = np.linspace(t[0], t[-1], N)
 
+    logfile.write('Predicting with GP\n')
     A_pred, sigmaA = gp.predict(np.expand_dims(support, 1), return_std=True)
 
+    logfile.write('Estimating SF\n')
     tau, v = estimate_structure_func_from_data(support, A_pred, sigmaA)
 
     beg_off = int(0.10 * len(tau))
@@ -110,21 +115,21 @@ def main(*args):
     y = A_pred
     sigma = sigmaA
 
-    with open('logfile_curvesum.log', 'w') as logfile:
-        t0 = time.time()
-        Xdata = []
-        true_delays = np.random.random(N_MC) * 100
+    logfile.write('Starting MC\n')
+    t0 = time.time()
+    Xdata = []
+    true_delays = np.random.random(N_MC) * 100
 
-        for i, delay in enumerate(true_delays):
-            logfile.write(f'Realization n° {i + 1}\n')
-            yA, yB = generate_PRH_light_curves(support, y, sigma, slope, intercept, delay)
-            Xdata.append(yA + yB)
+    for i, delay in enumerate(true_delays):
+        logfile.write(f'Realization n° {i + 1}\n')
+        yA, yB = generate_PRH_light_curves(support, y, sigma, slope, intercept, delay)
+        Xdata.append(yA + yB)
 
-        logfile.write('Done\n')
+    logfile.write('Done\n')
 
-        Xdata = np.stack(Xdata)
-        tf = time.time()
-        logfile.write(f'Total time: {tf-t0} seconds\n')
+    Xdata = np.stack(Xdata)
+    tf = time.time()
+    logfile.write(f'Total time: {tf-t0} seconds\n')
 
     ydata = true_delays
 
