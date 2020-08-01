@@ -68,6 +68,7 @@ qtconsole==4.7.4
 QtPy==1.9.0
 quadpy==0.14.11
 requests==2.23.0
+scikit-learn==0.22.1
 scipy==1.4.1
 Send2Trash==1.5.0
 simpy==4.0.1
@@ -93,3 +94,4 @@ webcolors==1.11.1
 webencodings==0.5.1
 widgetsnbextension==3.5.1
 zipp==3.1.0
+
