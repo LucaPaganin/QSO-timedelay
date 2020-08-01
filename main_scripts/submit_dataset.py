@@ -29,16 +29,14 @@ def main():
 
         cmd = subprocess.Popen(bsub_cmd, shell=True, stdout=subprocess.PIPE)
         cmd_stdout, cmd_stderr = cmd.communicate()
-        cmd_stdout = cmd_stdout.decode('utf-8')
-        cmd_stderr = cmd_stderr.decode('utf-8')
+        cmd_stdout = cmd_stdout.decode('utf-8') if cmd_stdout is not None else ''
+        cmd_stderr = cmd_stderr.decode('utf-8') if cmd_stderr is not None else ''
         if len(cmd_stderr) > 0:
             raise Exception(cmd_stderr)
         else:
             print(cmd_stdout)
 
 
-
-
-
-
-
+if __name__ == '__main__':
+    print('hello')
+    main()
