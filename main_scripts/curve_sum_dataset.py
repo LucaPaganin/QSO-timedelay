@@ -66,7 +66,7 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay):
     C = s2 - power_law_sf(tau_doubled, slope, intercept)
     C += 1e-10*np.eye(2*N)
     L = np.linalg.cholesky(C)
-    y = L @ np.random.normal(0, 1, 2*N) + err_doubled @ np.random.normal(0, 1, 2*N)
+    y = np.dot(L, np.random.normal(0, 1, 2*N)) + np.dot(err_doubled, np.random.normal(0, 1, 2*N))
     
     yA = y[:N] - y[:N].mean()
     yB = y[N:] - y[N:].mean()
