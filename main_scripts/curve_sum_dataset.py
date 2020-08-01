@@ -14,10 +14,34 @@ import h5py
 from sklearn.gaussian_process import GaussianProcessRegressor
 from typing import Tuple
 from sklearn.gaussian_process.kernels import RBF, Matern, ConstantKernel
+import logging
+
+logger = logging.getLogger()
 
 plt.rcParams['figure.figsize'] = (8, 6)
 plt.rcParams['figure.dpi'] = 120
 plt.rcParams['text.usetex'] = True
+
+
+def configure_logger(logger, logfile):
+    logger.setLevel(logging.INFO)
+    # create file handler which logs even debug messages
+    fh = logging.FileHandler(logfile, mode='w')
+    fh.setLevel(logging.INFO)
+    # create stdout handler
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    stderr_handler = logging.StreamHandler(sys.stderr)
+    stdout_handler.setLevel(logging.INFO)
+    stderr_handler.setLevel(logging.ERROR)
+    # create formatters and add them to the handlers
+    logfile_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    fh.setFormatter(logfile_formatter)
+    stdout_handler.setFormatter(logging.Formatter('%(message)s'))
+    stderr_handler.setFormatter(logging.Formatter('%(message)s'))
+    # add the handlers to the logger
+    logger.addHandler(fh)
+    logger.addHandler(stdout_handler)
+    logger.addHandler(stderr_handler)
 
 
 def power_law_sf(tau, slope, intercept):
@@ -81,8 +105,10 @@ def main(*args):
 
     os.chdir(workdir)
 
-    logfile = open('logfile_curvesum.log', 'w')
-    logfile.write('Reading data\n')
+    logfile = str(workdir / 'logfile_curvesum.log')
+    
+    configure_logger(logger, logfile)
+    logger.info('Reading data')
     data = pd.read_table(file_path)
     t = data['mhjd'].to_numpy(dtype=np.float64)
     A = data['mag_A'].to_numpy(dtype=np.float64)
@@ -93,16 +119,16 @@ def main(*args):
     gp = GaussianProcessRegressor(kernel=kernel, alpha=errA ** 2, n_restarts_optimizer=10,
                                   optimizer='fmin_l_bfgs_b', normalize_y=True)
 
-    logfile.write('Fitting GP to data\n')
+    logger.info('Fitting GP to data')
     gp.fit(np.expand_dims(t, 1), A)
 
     N = 2000
     support = np.linspace(t[0], t[-1], N)
 
-    logfile.write('Predicting with GP\n')
+    logger.info('Predicting with GP')
     A_pred, sigmaA = gp.predict(np.expand_dims(support, 1), return_std=True)
 
-    logfile.write('Estimating SF\n')
+    logger.info('Estimating SF')
     tau, v = estimate_structure_func_from_data(support, A_pred, sigmaA)
 
     beg_off = int(0.10 * len(tau))
@@ -115,31 +141,30 @@ def main(*args):
     y = A_pred
     sigma = sigmaA
 
-    logfile.write('Starting MC\n')
+    logger.info('Starting MC')
     t0 = time.time()
     Xdata = []
     true_delays = np.random.random(N_MC) * 100
 
     for i, delay in enumerate(true_delays):
-        logfile.write(f'Realization n° {i + 1}\n')
+        logger.info(f'Realization n° {i + 1}')
         yA, yB = generate_PRH_light_curves(support, y, sigma, slope, intercept, delay)
         Xdata.append(yA + yB)
 
-    logfile.write('Done\n')
+    logger.info('Done')
 
     Xdata = np.stack(Xdata)
     tf = time.time()
-    logfile.write(f'Total time: {tf-t0} seconds\n')
+    logger.info(f'Total time: {tf-t0} seconds')
 
     ydata = true_delays
 
-    logfile.write('Writing output to file\n')
+    logger.info('Writing output to file')
     file_name = f'HE0435_NMC_{N_MC}_curvesum'
     hf = h5py.File(file_name, 'w')
     hf.create_dataset(name='X', data=Xdata, compression='gzip', compression_opts=9)
     hf.create_dataset(name='y', data=ydata, compression='gzip', compression_opts=9)
     hf.close()
-    logfile.close()
 
 
 if __name__ == '__main__':
