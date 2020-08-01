@@ -3,7 +3,6 @@
 
 import numpy as np
 import pandas as pd
-import h5py
 import matplotlib.pyplot as plt
 from scipy import stats
 from scipy import interpolate
@@ -126,10 +125,11 @@ def main(*args):
         tf = time.time()
         logfile.write(f'Total time: {tf-t0} seconds\n')
 
-    hf = h5py.File(f'HE0435_NMC_{N_MC}_curvesum.h5', 'w')
-    hf.create_dataset(name='X', data=Xdata, compression='gzip', compression_opts=9)
-    hf.create_dataset(name='y', data=true_delays, compression='gzip', compression_opts=9)
-    hf.close()
+    ydata = true_delays
+
+    file_name = f'HE0435_NMC_{N_MC}_curvesum'
+    np.save(file_name, np.column_stack([Xdata, ydata]))
+
 
 
 if __name__ == '__main__':
