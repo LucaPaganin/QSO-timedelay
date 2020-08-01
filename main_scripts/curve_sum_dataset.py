@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 import os
 import sys
+import h5py
 from sklearn.gaussian_process import GaussianProcessRegressor
 from typing import Tuple
 from sklearn.gaussian_process.kernels import RBF, Matern, ConstantKernel
@@ -128,8 +129,10 @@ def main(*args):
     ydata = true_delays
 
     file_name = f'HE0435_NMC_{N_MC}_curvesum'
-    np.save(file_name, np.column_stack([Xdata, ydata]))
-
+    hf = h5py.File(file_name, 'w')
+    hf.create_dataset(name='X', data=Xdata, compression='gzip', compression_opts=9)
+    hf.create_dataset(name='y', data=ydata, compression='gzip', compression_opts=9)
+    hf.close()
 
 
 if __name__ == '__main__':
