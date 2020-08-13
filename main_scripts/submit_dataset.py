@@ -37,7 +37,7 @@ def main():
 
         err_file = wd / 'err_file.err'
         out_file = wd / 'out_file.out'
-        bsub_cmd = f'bsub -P c7 -q long -e {err_file} -o {out_file} {sh_file}'
+        bsub_cmd = f'bsub -P c7 -q long -n 8 -R"span[hosts=1]" -e {err_file} -o {out_file} {sh_file}'
         cmd = subprocess.Popen(bsub_cmd, shell=True, stdout=subprocess.PIPE)
         cmd_stdout, cmd_stderr = cmd.communicate()
         cmd_stdout = cmd_stdout.decode('utf-8') if cmd_stdout is not None else ''
