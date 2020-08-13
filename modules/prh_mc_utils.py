@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import stats
 
 
 def power_law_sf(tau, slope, intercept):
@@ -33,6 +34,23 @@ def compute_lags_matrix(t):
     t_col_repeated = np.repeat(t[:, np.newaxis], N, axis=1)
     tau = np.abs(t_row_repeated - t_col_repeated)
     return tau
+
+
+def estimate_structure_func_from_data(t, y, err_y):
+    N = len(t)
+    y_row_repeated = np.repeat(y[np.newaxis, :], N, axis=0)
+    y_col_repeated = np.repeat(y[:, np.newaxis], N, axis=1)
+    err_y_row_repeated = np.repeat(err_y[np.newaxis, :], N, axis=0)
+    err_y_col_repeated = np.repeat(err_y[:, np.newaxis], N, axis=1)
+    v = (y_row_repeated - y_col_repeated) ** 2 - (err_y_row_repeated ** 2 + err_y_col_repeated ** 2)
+    tau = compute_lags_matrix(t)
+
+    tau = tau.ravel()
+    v = v.ravel()[np.argsort(tau)]
+    tau.sort()
+    tau_binned_means = stats.binned_statistic(tau, tau, bins=100)[0]
+    v_binned_means = stats.binned_statistic(tau, v, bins=100)[0]
+    return tau_binned_means, v_binned_means
 
 
 def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift, shrink_factor):
