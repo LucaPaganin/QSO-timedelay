@@ -11,11 +11,12 @@ def main():
     N_jobs = 100
     workspace = Path('.').absolute()
     now = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
-    outdir = workspace.parent / f'aux/outdir_{now}'
     venv_path = workspace.parent / 'qso_timedelay_venv'
     input_file = workspace.parent / 'data/cnn_base_data/HE0435_Aflux_plus_Bflux.h5'
     main_script_path = workspace / 'curve_sum_dataset.py'
     modules_path = Path('..')
+    qso_id = input_file.name.split('_')[0]
+    outdir = workspace.parent / f'aux/{qso_id}_outdir_{now}'
     workdirs = [outdir / f'{i+1:03}' for i in range(N_jobs)]
 
     outdir.mkdir(exist_ok=True)
