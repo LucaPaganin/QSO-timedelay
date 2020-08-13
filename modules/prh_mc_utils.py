@@ -17,6 +17,16 @@ def flux_to_mag(flux):
     return -2.5 * np.log10(flux)
 
 
+def mag_flux_sum(mag1, mag2):
+    return flux_to_mag(mag_to_flux(mag1) + mag_to_flux(mag2))
+
+
+def flux_sum_err(mag1, mag2, magerr1, magerr2):
+    flux1 = mag_to_flux(mag1)
+    flux2 = mag_to_flux(mag2)
+    return (flux1*magerr1 + flux2*magerr2)/(flux1+flux2)
+
+
 def compute_lags_matrix(t):
     N = len(t)
     t_row_repeated = np.repeat(t[np.newaxis, :], N, axis=0)
@@ -25,7 +35,7 @@ def compute_lags_matrix(t):
     return tau
 
 
-def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift):
+def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift, shrink_factor):
     N = len(support)
     t_doubled = np.concatenate([support, support - delay])
     err_doubled = np.concatenate([sigma, sigma])
@@ -39,5 +49,6 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_sh
     yA = y[:N] - y[:N].mean()
     yB = y[N:] - y[N:].mean()
     yB += mag_shift
+    yB *= shrink_factor
 
     return yA, yB

@@ -38,16 +38,18 @@ def main(*args):
     logger.info('Starting MC')
     t0 = time.time()
     Xdata = []
-    max_delay = 20
+    min_delay = -30
+    max_delay = +30
     max_mag_shift = 2
-    true_delays = np.random.random(N_MC) * max_delay
+    true_delays = np.random.random(N_MC) * (max_delay - min_delay) + min_delay
     mag_shifts = np.random.random(N_MC) * max_mag_shift
+    shrink_factors = np.random.random(N_MC) * (1 - 0.8) + 0.8
 
-    for i, (mag_shift, delay) in enumerate(zip(mag_shifts, true_delays)):
+    for i, (mag_shift, delay, shf) in enumerate(zip(mag_shifts, true_delays, shrink_factors)):
         logger.info(f'Realization n° {i + 1}')
         yA, yB = prh_mc_utils.generate_PRH_light_curves(support=t, y=y_data, sigma=sigma_data,
                                                         slope=slope, intercept=intercept,
-                                                        delay=delay, mag_shift=mag_shift)
+                                                        delay=delay, mag_shift=mag_shift, shrink_factor=shf)
         y_combo = prh_mc_utils.flux_to_mag(prh_mc_utils.mag_to_flux(yA) + prh_mc_utils.mag_to_flux(yB))
         Xdata.append(y_combo)
 
