@@ -53,7 +53,7 @@ def estimate_structure_func_from_data(t, y, err_y):
     return tau_binned_means, v_binned_means
 
 
-def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift, shrink_factor):
+def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift):
     N = len(support)
     t_doubled = np.concatenate([support, support - delay])
     err_doubled = np.concatenate([sigma, sigma])
@@ -67,6 +67,5 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_sh
     yA = y[:N] - y[:N].mean()
     yB = y[N:] - y[N:].mean()
     yB += mag_shift
-    yB *= shrink_factor
 
     return yA, yB
