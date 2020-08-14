@@ -37,7 +37,7 @@ def main(*args):
 
     logger.info('Starting MC')
     t0 = time.time()
-    min_delay = -30
+    min_delay = 0
     max_delay = +30
     max_mag_shift = 2
     true_delays = np.random.random(N_MC) * (max_delay - min_delay) + min_delay

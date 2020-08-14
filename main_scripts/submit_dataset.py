@@ -2,37 +2,42 @@ import subprocess
 import shutil
 from pathlib import Path
 import datetime
-import os
 import sys
-from typing import Union
 
 
-def main():
+def main(*args):
     N_jobs = 100
     workspace = Path('.').absolute()
     now = datetime.datetime.now().strftime('%Y-%m-%dT%H-%M-%S')
     venv_path = workspace.parent / 'qso_timedelay_venv'
-    input_file = workspace.parent / 'data/cnn_base_data/HE0435_Aflux_plus_Bflux.h5'
     main_script_path = workspace / 'curve_sum_dataset.py'
-    modules_path = Path('..')
+    modules_path = Path('..').resolve()
+    config_file = workspace.parent / 'dataset_config.json'
+
+    input_file = Path(args[0])
     qso_id = input_file.name.split('_')[0]
-    outdir = workspace.parent / f'aux/{qso_id}_outdir_{now}'
+    outdir = workspace.parent / f'aux/{qso_id}_dataset_{now}'
     workdirs = [outdir / f'{i+1:03}' for i in range(N_jobs)]
+
+    files_to_copy = {
+        'main': main_script_path,
+        'input': input_file,
+        'config': config_file
+    }
 
     outdir.mkdir(exist_ok=True)
     for wd in workdirs:
         wd.mkdir(exist_ok=True)
-        dst_main_path = wd / main_script_path.name
-        dst_input_path = wd / input_file.name
-        shutil.copy(src=main_script_path, dst=dst_main_path)
-        dst_main_path.chmod(0o755)
-        shutil.copy(src=input_file, dst=dst_input_path)
+        dst_dict = {}
+        for key, file in files_to_copy.items():
+            dst_dict[key] = wd / file.name
+            shutil.copy(src=file, dst=dst_dict[key])
 
         sh_file = wd / 'job.sh'
         with open(sh_file, 'w') as sh:
             sh.write('#!/bin/bash\n\n')
             sh.write(f'source {venv_path}/bin/activate\n')
-            sh.write(f'{dst_main_path} {dst_input_path} {wd} {modules_path}\n')
+            sh.write(f'python3 {dst_dict["main"]} {dst_dict["input"]} {wd} {modules_path} {dst_dict["config"]}\n')
         sh_file.chmod(0o755)
 
         err_file = wd / 'err_file.err'
@@ -49,4 +54,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    arguments = sys.argv[1:]
+    main(*arguments)
