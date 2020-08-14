@@ -12,7 +12,7 @@ def main(*args):
     venv_path = workspace.parent / 'qso_timedelay_venv'
     main_script_path = workspace / 'curve_sum_dataset.py'
     modules_path = Path('..').resolve()
-    config_file = workspace.parent / 'dataset_config.json'
+    config_file = workspace / 'dataset_config.json'
 
     input_file = Path(args[0])
     qso_id = input_file.name.split('_')[0]
