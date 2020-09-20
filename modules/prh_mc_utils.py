@@ -1,5 +1,10 @@
 import numpy as np
 from scipy import stats
+import pandas as pd
+import h5py
+from typing import Dict
+from pathlib import Path
+from .utils import hdf5_opts
 
 
 def power_law_sf(tau, slope, intercept):
@@ -72,3 +77,31 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_sh
     yB += mag_shift
 
     return yA, yB
+
+
+def create_qso_base_file(qso_dict: Dict[str, np.ndarray] = None,
+                         gp_dict: Dict[str, np.ndarray] = None,
+                         sf_dict: Dict[str, np.ndarray] = None,
+                         outfile: Path = None):
+    hf = h5py.File(outfile, 'w')
+    base_grp = hf.create_group('qso_base_data')
+    orig_grp = base_grp.create_group('original_data')
+    for key in qso_dict:
+        if key == 't':
+            orig_grp.create_dataset(name='t', data=qso_dict['t'], **hdf5_opts)
+        else:
+            grp = orig_grp.create_group(key)
+            for subkey in qso_dict[key]:
+                grp.create_dataset(name=subkey, data=qso_dict[key][subkey], **hdf5_opts)
+    gp_grp = base_grp.create_group('fluxsum_gp_interpolation')
+    for key in gp_dict:
+        gp_grp.create_dataset(name=key, data=gp_dict[key], **hdf5_opts)
+    sf_grp = base_grp.create_group('structure_function')
+    for key in sf_dict:
+        if isinstance(sf_dict[key], np.ndarray):
+            sf_grp.create_dataset(name=key, data=sf_dict[key], **hdf5_opts)
+        else:
+            sf_grp.create_dataset(name=key, data=sf_dict[key])
+    hf.close()
+
+

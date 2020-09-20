@@ -1,6 +1,7 @@
 import logging
 import sys
 import numpy as np
+hdf5_opts = {'dtype': 'f8', 'compression': 'gzip', 'compression_opts': 9}
 
 
 def configure_logger(logger, logfile):
