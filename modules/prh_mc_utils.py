@@ -36,7 +36,7 @@ def compute_lags_matrix(t):
     return tau
 
 
-def estimate_structure_func_from_data(t, y, err_y):
+def estimate_structure_func_from_data(t, y, err_y, n_bins=100):
     N = len(t)
     y_row_repeated = np.repeat(y[np.newaxis, :], N, axis=0)
     y_col_repeated = np.repeat(y[:, np.newaxis], N, axis=1)
@@ -48,8 +48,8 @@ def estimate_structure_func_from_data(t, y, err_y):
     tau = tau.ravel()
     v = v.ravel()[np.argsort(tau)]
     tau.sort()
-    tau_binned_means = stats.binned_statistic(tau, tau, bins=100)[0]
-    v_binned_means = stats.binned_statistic(tau, v, bins=100)[0]
+    tau_binned_means = stats.binned_statistic(tau, tau, bins=n_bins)[0]
+    v_binned_means = stats.binned_statistic(tau, v, bins=n_bins)[0]
     return tau_binned_means, v_binned_means
 
 
@@ -58,14 +58,17 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_sh
     t_doubled = np.concatenate([support, support - delay])
     err_doubled = np.concatenate([sigma, sigma])
     tau_doubled = compute_lags_matrix(t_doubled)
-    s2 = (y ** 2).mean()
+    s2 = ((y-sigma)**2).mean()
     C = s2 - power_law_sf(tau_doubled, slope, intercept)
     C += 1e-10 * np.eye(2 * N)
     L = np.linalg.cholesky(C)
     y = L @ np.random.normal(0, 1, 2 * N) + err_doubled @ np.random.normal(0, 1, 2 * N)
 
-    yA = y[:N] - y[:N].mean()
-    yB = y[N:] - y[N:].mean()
+    yA = y[:N]
+    yB = y[N:]
+    yA -= yA.mean()
+    yB -= yB.mean()
+    
     yB += mag_shift
 
     return yA, yB
