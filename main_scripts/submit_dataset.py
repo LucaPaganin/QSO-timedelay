@@ -1,5 +1,4 @@
 import subprocess
-import shutil
 from pathlib import Path
 import datetime
 import sys
@@ -16,7 +15,7 @@ def main(*args):
 
     input_file = Path(args[0])
     qso_id = input_file.stem
-    outdir = workspace.parent.parent / f'{qso_id}_dataset_{now}'
+    outdir = workspace.parent.parent / f'outputs/{qso_id}_dataset_{now}'
     workdirs = [outdir / f'{i+1:03}' for i in range(N_jobs)]
 
     outdir.mkdir(exist_ok=True)
