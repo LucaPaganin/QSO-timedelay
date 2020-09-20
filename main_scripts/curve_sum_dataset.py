@@ -21,7 +21,7 @@ def main(*args):
     with open(config_file, 'r') as jsf:
         config = json.load(jsf)
 
-    qso_id = file_path.name.split('_')[0]
+    qso_id = file_path.stem
 
     sys.path.insert(0, str(modules_path))
     from modules import utils
@@ -34,11 +34,13 @@ def main(*args):
     utils.configure_logger(logger, logfile)
     logger.info('Reading data')
     data = h5py.File(file_path, 'r')
-    t = data['t'][()]
-    y_data = data['y'][()]
-    sigma_data = data['err_y'][()]
-    slope = data['structure_function']['slope'][()]
-    intercept = data['structure_function']['intercept'][()]
+    gp_grp = data['qso_base_data']['fluxsum_gp_interpolation']
+    t = gp_grp['t'][()]
+    y_data = gp_grp['y_pred'][()]
+    sigma_data = gp_grp['sigma_pred'][()]
+    sf_grp = data['qso_base_data']['structure_function']
+    slope = sf_grp['slope'][()]
+    intercept = sf_grp['intercept'][()]
 
     logger.info('Starting MC')
     t0 = time.time()
@@ -49,7 +51,6 @@ def main(*args):
     mag_shifts = np.random.random(N_MC) * max_mag_shift
 
     Xdata = []
-    sf_mc_data = []
 
     for i, (mag_shift, delay) in enumerate(zip(mag_shifts, true_delays)):
         logger.info(f'Realization n° {i + 1}')
@@ -58,16 +59,11 @@ def main(*args):
                                                         slope=slope, intercept=intercept,
                                                         delay=delay, mag_shift=mag_shift)
         y_combo = prh_mc_utils.mag_flux_sum(yA, yB)
-        logger.info('Estimating structure function')
-        _, v_mc = prh_mc_utils.estimate_structure_func_from_data(t, y_combo, sigma_data)
         Xdata.append(y_combo)
-        sf_mc_data.append(v_mc)
 
     logger.info('Done')
 
     Xdata = np.asarray(Xdata)
-    sf_mc_data = np.asarray(sf_mc_data)
-    sf_mc_mean = np.mean(sf_mc_data, axis=0)
     tf = time.time()
     logger.info(f'Total time: {tf - t0} seconds')
 
@@ -76,9 +72,8 @@ def main(*args):
     logger.info('Writing output to file')
     file_name = f'{qso_id}_NMC_{N_MC}.h5'
     hf = h5py.File(file_name, 'w')
-    hf.create_dataset(name='X', data=Xdata, compression='gzip', compression_opts=9)
-    hf.create_dataset(name='y', data=ydata, compression='gzip', compression_opts=9)
-    hf.create_dataset(name='sf_mc_mean', data=sf_mc_mean, compression='gzip', compression_opts=9)
+    hf.create_dataset(name='X', data=Xdata, **utils.hdf5_opts)
+    hf.create_dataset(name='y', data=ydata, **utils.hdf5_opts)
     hf.close()
 
 

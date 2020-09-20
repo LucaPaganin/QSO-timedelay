@@ -15,29 +15,19 @@ def main(*args):
     config_file = workspace / 'dataset_config.json'
 
     input_file = Path(args[0])
-    qso_id = input_file.name.split('_')[0]
-    outdir = workspace.parent / f'aux/{qso_id}_dataset_{now}'
+    qso_id = input_file.stem
+    outdir = workspace.parent.parent / f'{qso_id}_dataset_{now}'
     workdirs = [outdir / f'{i+1:03}' for i in range(N_jobs)]
-
-    files_to_copy = {
-        'main': main_script_path,
-        'input': input_file,
-        'config': config_file
-    }
 
     outdir.mkdir(exist_ok=True)
     for wd in workdirs:
         wd.mkdir(exist_ok=True)
-        dst_dict = {}
-        for key, file in files_to_copy.items():
-            dst_dict[key] = wd / file.name
-            shutil.copy(src=file, dst=dst_dict[key])
 
         sh_file = wd / 'job.sh'
         with open(sh_file, 'w') as sh:
             sh.write('#!/bin/bash\n\n')
             sh.write(f'source {venv_path}/bin/activate\n')
-            sh.write(f'python3 {dst_dict["main"]} {dst_dict["input"]} {wd} {modules_path} {dst_dict["config"]}\n')
+            sh.write(f'python3 {main_script_path} {input_file} {wd} {modules_path} {config_file}\n')
         sh_file.chmod(0o755)
 
         err_file = wd / 'err_file.err'
