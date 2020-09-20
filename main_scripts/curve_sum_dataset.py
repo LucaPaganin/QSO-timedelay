@@ -65,7 +65,7 @@ def main(*args):
 
     Xdata = np.asarray(Xdata)
     tf = time.time()
-    logger.info(f'Total time: {tf - t0} seconds')
+    logger.info(f'Total time: {tf - t0:.3f} seconds')
 
     ydata = true_delays
 
