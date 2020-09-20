@@ -13,7 +13,7 @@ def main(*args):
     modules_path = Path('..').resolve()
     config_file = workspace / 'dataset_config.json'
 
-    input_file = Path(args[0])
+    input_file = Path(args[0]).resolve()
     qso_id = input_file.stem
     outdir = workspace.parent.parent / f'outputs/{qso_id}_dataset_{now}'
     workdirs = [outdir / f'{i+1:03}' for i in range(N_jobs)]
