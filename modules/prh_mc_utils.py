@@ -23,8 +23,18 @@ def flux_to_mag(flux):
     return -2.5 * np.log10(flux)
 
 
-def mag_flux_sum(mag1, mag2):
-    return flux_to_mag(mag_to_flux(mag1) + mag_to_flux(mag2))
+def mags_to_fluxsum_mag(mag1, mag2, magerr1, magerr2):
+    y = flux_to_mag(mag_to_flux(mag1) + mag_to_flux(mag2))
+    err_y = flux_sum_err(mag1, mag2, magerr1, magerr2)
+    return y, err_y
+
+
+def mags_to_fluxsum(mag1, mag2, magerr1, magerr2):
+    f1 = mag_to_flux(mag1) 
+    f2 = mag_to_flux(mag2)
+    y = f1 + f2
+    err_y = np.log(10)/2.5 * f1 * magerr1 + np.log(10)/2.5 * f2 * magerr2
+    return y, err_y
 
 
 def flux_sum_err(mag1, mag2, magerr1, magerr2):
@@ -58,7 +68,7 @@ def estimate_structure_func_from_data(t, y, err_y, n_bins=100):
     return tau_binned_means, v_binned_means
 
 
-def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_shift):
+def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay):
     N = len(support)
     t_doubled = np.concatenate([support, support - delay])
     err_doubled = np.concatenate([sigma, sigma])
@@ -67,14 +77,12 @@ def generate_PRH_light_curves(support, y, sigma, slope, intercept, delay, mag_sh
     C = s2 - power_law_sf(tau_doubled, slope, intercept)
     C += 1e-10 * np.eye(2 * N)
     L = np.linalg.cholesky(C)
-    y = L @ np.random.normal(0, 1, 2 * N) + err_doubled @ np.random.normal(0, 1, 2 * N)
+    y_out = L @ np.random.normal(0, 1, 2 * N) + err_doubled @ np.random.normal(0, 1, 2 * N)
 
-    yA = y[:N]
-    yB = y[N:]
+    yA = y_out[:N]
+    yB = y_out[N:]
     yA -= yA.mean()
     yB -= yB.mean()
-    
-    yB += mag_shift
 
     return yA, yB
 
