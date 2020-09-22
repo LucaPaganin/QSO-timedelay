@@ -8,7 +8,6 @@ import time
 import argparse
 import numpy as np
 import logging
-import datetime
 
 sys.path.insert(0, '..')
 
