@@ -60,12 +60,18 @@ def main(args_dict):
     n_jobs = len(workdirs)
     n_outputs = 0
     logger.info('Waiting for jobs execution')
+    t0 = time.time()
     while n_outputs != n_jobs:
         logger.info(f'Waiting for {check_time} s...')
         time.sleep(check_time)
-        logger.info('Checking jobs outputs')
+        t1 = time.time()
+        silent = int(t1-t0) % 1800 != 0 
         n_outputs = len(list(outdir.glob('*/*.h5')))
-        logger.info(f'{n_outputs}/{n_jobs} completed')
+        if not silent:
+            logger.info(f'{n_outputs}/{n_jobs} completed')
+    
+    tf = time.time()
+    logger.info(f'Total elapsed time: {tf-t0:.2f} s')
 
     output_files = list(outdir.glob('*/*.h5'))
     out_file = outdir / input_file.name
