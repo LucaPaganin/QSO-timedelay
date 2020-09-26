@@ -58,8 +58,7 @@ def main(*args):
         yA, yB = prh_mc_utils.generate_PRH_light_curves(support=t, y=y_data, sigma=sigma_data,
                                                         slope=slope, intercept=intercept,
                                                         delay=delay)
-        # y_combo = prh_mc_utils.mags_to_fluxsum(yA, yB)
-        y_combo = yA + yB
+        y_combo = prh_mc_utils.mags_to_fluxsum_mag(yA, yB)
         Xdata.append(y_combo)
 
     logger.info('Done')
