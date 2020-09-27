@@ -25,7 +25,7 @@ def flux_to_mag(flux):
 
 def mags_to_fluxsum_mag(mag1, mag2, magerr1, magerr2):
     y = flux_to_mag(mag_to_flux(mag1) + mag_to_flux(mag2))
-    err_y = flux_sum_err(mag1, mag2, magerr1, magerr2)
+    err_y = fluxsum_mag_error(mag1, mag2, magerr1, magerr2)
     return y, err_y
 
 
@@ -37,7 +37,7 @@ def mags_to_fluxsum(mag1, mag2, magerr1, magerr2):
     return y, err_y
 
 
-def flux_sum_err(mag1, mag2, magerr1, magerr2):
+def fluxsum_mag_error(mag1, mag2, magerr1, magerr2):
     flux1 = mag_to_flux(mag1)
     flux2 = mag_to_flux(mag2)
     return (flux1*magerr1 + flux2*magerr2)/(flux1+flux2)
