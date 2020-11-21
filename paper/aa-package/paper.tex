@@ -14,6 +14,8 @@
 %
 \documentclass{aa}  
 
+\usepackage[]{natbib}
+
 %
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,38 +81,17 @@
 %-------------------------------------------------------------------
 
 \section{Introduction}
+The Hubble parameter $H_0$ quantifies the expansion rate of the Universe and can be measured in different ways. The Planck collaboration \cite{planck} has found $H_0 = 67.4 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$ from the Cosmic Microwave Background anisotropies spectrum \footnote{Assuming the $\Lambda$CDM cosmological model.}, whereas, cosmic distance ladder observations \cite{cepheid_H0} give $H_0 = 74.03 \pm 1.42$ km s$^{-1}$ Mpc$^{-1}$, resulting in a tension of about $4.4\sigma$.\\ As first pointed out in \cite{Refsdal1964}, gravitational lensing offers an alternative way of determining the Hubble parameter. The light rays coming from a distant source, e.g. a quasar, can be deflected by the gravitational field of an intervening massive object, like a galaxy. If the field is strong enough, multiple images of the same source will be observed and, by tracking the light intensity of each image over time, one can obtain a so-called \emph{light curve}. The light curves associated with different images will exhibit a mutual time-delay, due to the different paths that the photons have travelled. As shown in \cite{Refsdal1964}, this time-delay can be directly related to $H_0$. The H0LiCOW collaboration \cite{H0licow_XIII} found $H_0 = 73.3_{-1.8}^{+1.7}$ km s$^{-1}$ Mpc$^{-1}$ from a sample of six lensed quasars monitored by the COSMOGRAIL \cite{Cosmograil2020} project, enhancing the tension up to $5.3 \sigma$, and thus motivating further studies aimed at improving the precision in the estimate of $H_0$.
+\\
+Time-delays between light curves of Gravitationally Lensed Quasars (GLQs) can be estimated with various methods \cite{Tewes2013}, such as free-knot spline interpolation \cite{free} or via Gaussian Process (GP) regression \cite{Rasmussen}. Such methods work under the assumption that multiple images of the same quasar are fully resolved so that a light curve can be extracted for each of them. However, most known GLQs \cite{quasars_db} have small angular separations $\Delta\theta < \sim{3}{arcsec}$. 
+This would make big telescopes the ideal instruments to perform lensed quasars monitoring, both in light of their high angular resolution and the geographical areas they are placed in, where the effects of atmospheric turbulence are less prominent.
+%This would make big telescopes, with high angular resolution, the ideal instruments to perform lensed quasars monitoring. Furthermore, these telescopes are placed in geographical areas where effects of atmospheric turbulence are less prominent. 
+However, because of the time scales of the intrinsic variations of the source, such observation campaigns should last years \cite{Cosmograil2020}. Therefore, due to the amount of observational requests that big telescopes have to fulfill, they can not be employed for these purposes. On the other hand, small/medium sized telescopes ($1$-$2$m) \cite{Borgeest1996} can be used. Unfortunately their reduced angular resolution, together with their often less privileged geographical positions in terms of atmospheric seeing, may worsen the effective angular resolution up to $3 arcsec$ \cite{karttunen2016fundamental}. In addition, small telescopes cannot observe faint distant sources. These shortcomings prevent the acquisition of a large number of GLQ datasets suitable for the application of the aforementioned techniques \cite{free, Rasmussen}.
+Here, we propose a novel approach based on Machine Learning (ML) algorithms to estimate the time-delay from non-resolved lensed quasar light curves. In particular, we train a one-dimensional Convolutional Neural Network (CNN) to map non-resolved double-lensed quasar images into the corresponding time-delay. Starting from open-source real data \cite{CosmograilData} of resolved quasar light curves, we combine them into a single time series to mimic the real situation in which the quasar images are not resolved. Then, we feed the so-obtained time series into a GP-based algorithm, which artificially generates new realistic non-resolved quasar light curves along with their corresponding time-delays. Preliminary experiments based on data of quasars HE0435 and HS2209 demonstrate the effectiveness of the proposed method.
 
-   In the \emph{nucleated instability\/} (also called core
-   instability) hypothesis of giant planet
-   formation, a critical mass for static core  envelope
-   protoplanets has been found. \citet{mizuno} determined
-   the critical mass of the core to be about $12 \,M_\oplus$
-   ($M_\oplus=5.975 \times 10^{27}\,\mathrm{g}$ is the Earth mass), which
-   is independent of the outer boundary
-   conditions and therefore independent of the location in the
-   solar nebula. This critical value for the core mass corresponds
-   closely to the cores of today's giant planets.
-
-   Although no hydrodynamical study has been available many workers
-   conjectured that a collapse or rapid contraction will ensue
-   after accumulating the critical mass. The main motivation for
-   this article
-   is to investigate the stability of the static envelope at the
-   critical mass. With this aim the local, linear stability of static
-   radiative gas  spheres is investigated on the basis of Baker's
-   (\citeyear{baker}) standard one-zone model. 
-
-   Phenomena similar to the ones described above for giant planet
-   formation have been found in hydrodynamical models concerning
-   star formation where protostellar cores explode
-   (Tscharnuter \citeyear{tscharnuter}, Balluch \citeyear{balluch}),
-   whereas earlier studies found quasi-steady collapse flows. The
-   similarities in the (micro)physics, i.e., constitutive relations of
-   protostellar cores and protogiant planets serve as a further
-   motivation for this study.
-
+   
 %--------------------------------------------------------------------
-\section{Baker's standard one-zone model}
+\section{Light Curves Simulation}
 
 %-------------------------------------- Two column figure (place early!)
    \begin{figure*}
@@ -395,82 +376,11 @@
 % - join the .bib files when you upload your source files
 %-------------------------------------------------------------------
 
-\begin{thebibliography}{}
-
-  \bibitem[Baker(1966)]{baker} Baker, N. 1966,
-      in Stellar Evolution,
-      ed.\ R. F. Stein,\& A. G. W. Cameron
-      (Plenum, New York) 333
-
-   \bibitem[Balluch(1988)]{balluch} Balluch, M. 1988,
-      A\&A, 200, 58
-
-   \bibitem[Cox(1980)]{cox} Cox, J. P. 1980,
-      Theory of Stellar Pulsation
-      (Princeton University Press, Princeton) 165
-
-   \bibitem[Cox(1969)]{cox69} Cox, A. N.,\& Stewart, J. N. 1969,
-      Academia Nauk, Scientific Information 15, 1
-
-   \bibitem[Mizuno(1980)]{mizuno} Mizuno H. 1980,
-      Prog. Theor. Phys., 64, 544
-   
-   \bibitem[Tscharnuter(1987)]{tscharnuter} Tscharnuter W. M. 1987,
-      A\&A, 188, 55
-  
-   \bibitem[Terlevich(1992)]{terlevich} Terlevich, R. 1992, in ASP Conf. Ser. 31, 
-      Relationships between Active Galactic Nuclei and Starburst Galaxies, 
-      ed. A. V. Filippenko, 13
-
-   \bibitem[Yorke(1980a)]{yorke80a} Yorke, H. W. 1980a,
-      A\&A, 86, 286
-
-   \bibitem[Zheng(1997)]{zheng} Zheng, W., Davidsen, A. F., Tytler, D. \& Kriss, G. A.
-      1997, preprint
-\end{thebibliography}
+\bibliographystyle{./bibtex/aa} % style aa.bst
+\bibliography{./bibtex/biblio}
 
 \end{document}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Example below of non-structurated natbib references  
-To use the v8.3 macros with this form of composition of bibliography, 
-the option "bibyear" should be added to the command line 
-"\documentclass[bibyear]{aa}".
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{thebibliography}{}
-
-  \bibitem[1966]{baker} Baker, N. 1966,
-      in Stellar Evolution,
-      ed.\ R. F. Stein,\& A. G. W. Cameron
-      (Plenum, New York) 333
-
-   \bibitem[1988]{balluch} Balluch, M. 1988,
-      A\&A, 200, 58
-
-   \bibitem[1980]{cox} Cox, J. P. 1980,
-      Theory of Stellar Pulsation
-      (Princeton University Press, Princeton) 165
-
-   \bibitem[1969]{cox69} Cox, A. N.,\& Stewart, J. N. 1969,
-      Academia Nauk, Scientific Information 15, 1
-
-   \bibitem[1980]{mizuno} Mizuno H. 1980,
-      Prog. Theor. Phys., 64, 544
-   
-   \bibitem[1987]{tscharnuter} Tscharnuter W. M. 1987,
-      A\&A, 188, 55
-  
-   \bibitem[1992]{terlevich} Terlevich, R. 1992, in ASP Conf. Ser. 31, 
-      Relationships between Active Galactic Nuclei and Starburst Galaxies, 
-      ed. A. V. Filippenko, 13
-
-   \bibitem[1980a]{yorke80a} Yorke, H. W. 1980a,
-      A\&A, 86, 286
-
-   \bibitem[1997]{zheng} Zheng, W., Davidsen, A. F., Tytler, D. \& Kriss, G. A.
-      1997, preprint
-\end{thebibliography}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Examples for figures using graphicx

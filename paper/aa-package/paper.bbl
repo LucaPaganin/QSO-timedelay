@@ -1,0 +1,54 @@
+\begin{thebibliography}{12}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{qua(????)}]{quasars_db}
+ ????, {GLQ Database: https://research.ast.cam.ac.uk/lensedquasars/index.html}
+
+\bibitem[{Cos(????)}]{CosmograilData}
+ ????, {Released data ‒ LASTRO ‐ EPFL}
+
+\bibitem[{Borgeest {et~al.}(1996)Borgeest, Schramm, \& {Von
+  Linde}}]{Borgeest1996}
+Borgeest, U., Schramm, K.-J., \& {Von Linde}, J. 1996, in Examining Big Bang
+  Diffus. Backgr. Radiations (Springer Netherlands), 527--528
+
+\bibitem[{et~al(2020)}]{planck}
+et~al, P. 2020, A\&A, 641, A6
+
+\bibitem[{Jupp(1978)}]{free}
+Jupp, D.~L. 1978, SIAM Journal on Numerical Analysis, 15, 328
+
+\bibitem[{Karttunen(2016)}]{karttunen2016fundamental}
+Karttunen, H. 2016, Fundamental astronomy (Heidelberg: Springer)
+
+\bibitem[{Millon {et~al.}(2020)Millon, Courbin, Bonvin, Paic, Meylan, Tewes,
+  Sluse, Magain, Chan, Galan, Joseph, Lemon, Tihhonova, Anderson, Marmier,
+  Chazelas, Lendl, Triaud, \& Wyttenbach}]{Cosmograil2020}
+Millon, M., Courbin, F., Bonvin, V., {et~al.} 2020, Astron. Astrophys.
+  [\eprint[arXiv]{2002.05736}]
+
+\bibitem[{Rasmussen \& Williams(2006)}]{Rasmussen}
+Rasmussen, C. \& Williams, C. 2006, Gaussian Processes for Machine Learning,
+  Adaptive Computation and Machine Learning (Cambridge, MA, USA: MIT Press),
+  248
+
+\bibitem[{Refsdal(1964)}]{Refsdal1964}
+Refsdal, S. 1964, Monthly Notices of the Royal Astronomical Society, 128, 307
+
+\bibitem[{Riess {et~al.}(2019)Riess, Casertano, Yuan, Macri, \&
+  Scolnic}]{cepheid_H0}
+Riess, A.~G., Casertano, S., Yuan, W., Macri, L.~M., \& Scolnic, D. 2019, The
+  Astrophysical Journal, 876, 85
+
+\bibitem[{Tewes {et~al.}(2013)Tewes, Courbin, \& Meylan}]{Tewes2013}
+Tewes, M., Courbin, F., \& Meylan, G. 2013, Astron. Astrophys., 553
+  [\eprint[arXiv]{1208.5598}]
+
+\bibitem[{Wong {et~al.}(2020)Wong, Suyu, Chen, Rusu, Millon, Sluse, Bonvin,
+  Fassnacht, Taubenberger, Auger, Birrer, Chan, Courbin, Hilbert, Tihhonova,
+  Treu, Agnello, Ding, Jee, Komatsu, Shajib, Sonnenfeld, Blandford, Koopmans,
+  Marshall, \& Meylan}]{H0licow_XIII}
+Wong, K.~C., Suyu, S.~H., Chen, G. C.-F., {et~al.} 2020, Mon. Not. R. Astron.
+  Soc. [\eprint[arXiv]{arXiv:1907.04869v2}]
+
+\end{thebibliography}

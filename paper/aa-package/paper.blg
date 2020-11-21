@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: paper.aux
+The style file: ./bibtex/aa.bst
+Database file #1: ./bibtex/biblio.bib
+Repeated entry---line 153 of file ./bibtex/biblio.bib
+ : @article{quasars_db
+ :                    ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "baker"
+Warning--I didn't find a database entry for "cox"
+Name 1 in "{Planck Collaboration} et al," has a comma at the end for entry planck
+while executing---line 1601 of file ./bibtex/aa.bst
+Name 1 in "{Planck Collaboration} et al," has a comma at the end for entry planck
+while executing---line 1601 of file ./bibtex/aa.bst
+Warning--to sort, need author or key in quasars_db
+Warning--to sort, need author or key in CosmograilData
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty year in quasars_db; set to ????
+Warning--empty year in CosmograilData; set to ????
+Name 1 in "{Planck Collaboration} et al," has a comma at the end for entry planck
+while executing---line 1684 of file ./bibtex/aa.bst
+Name 1 in "{Planck Collaboration} et al," has a comma at the end for entry planck
+while executing---line 1684 of file ./bibtex/aa.bst
+You've used 12 entries,
+            3039 wiz_defined-function locations,
+            751 strings with 7541 characters,
+and the built_in function-call counts, 6468 in all, are:
+= -- 521
+> -- 586
+< -- 5
++ -- 198
+- -- 186
+* -- 565
+:= -- 1181
+add.period$ -- 12
+call.type$ -- 12
+change.case$ -- 110
+chr.to.int$ -- 12
+cite$ -- 20
+duplicate$ -- 226
+empty$ -- 343
+format.name$ -- 208
+if$ -- 1280
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 9
+newline$ -- 40
+num.names$ -- 40
+pop$ -- 124
+preamble$ -- 1
+purify$ -- 110
+quote$ -- 0
+skip$ -- 186
+stack$ -- 0
+substring$ -- 208
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 102
+warning$ -- 4
+while$ -- 38
+width$ -- 0
+write$ -- 122
+(There were 5 error messages)
