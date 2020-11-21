@@ -5,6 +5,7 @@ aux
 *.h5
 .ipynb_checkpoints
 *.pdf
+qso*venv
 
 # documentation
 html/
