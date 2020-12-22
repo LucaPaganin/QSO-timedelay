@@ -1,0 +1,196 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[twoside,twocolumn]{article}
+
+\usepackage{xcolor}
+
+\usepackage{preamble}
+
+%-------------------
+%	BIBLIOGRAPHY
+%-------------------
+
+\usepackage[style=numeric-comp,useprefix,hyperref,backend=biber,sorting=none,maxbibnames=10]{biblatex}
+\addbibresource{bib_by_hand.bib}
+\addbibresource{QSO_timedelay.bib}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{Article Title} % Article title
+\author{%
+\textsc{John Smith}\thanks{A thank you or further information} \\[1ex] % Your name
+\normalsize University of California \\ % Your institution
+\normalsize \href{mailto:john@smith.com}{john@smith.com} % Your email address
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+}
+\date{\today} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}
+\noindent The recent tensions on the measured value of the Hubble parameter $H_0$ between cosmic microwave background radiation and astrophysical observations have triggered the need of new methods for its determination. In this respect, an effort has been done by the H0LiCoW collaboration to use the gravitational lensing of quasars as a probe for $H_0$ through the measurement of the time delay between the multiple images of the lensed quasar. Measurements of the time delay require a long term monitoring of lensed quasars, of the order of years. Since big telescopes have to deal with many observational requests, it is difficult to have a regular monitoring campaign over the years, therefore this task can be achieved more easily by small/medium sized telescopes. However, the number of lensed quasars with multiple images that can be angularly resolved by these telescopes drops drastically. Here we present a method to deal with \textbf{non fully resolved} lensed quasars. This method has also the advantage of being less dependent on the microlensing effect of the lens galaxy.
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+In the last years, the precision of the Planck experiment [cita], whose main task was to analyse the Cosmic Microwave Background (CMB) anisotropies, has allowed to fully test our standard cosmological model ($\Lambda$CDM) which assumes the existence of Dark Energy ($\Lambda$) and Cold Dark Matter (CDM). In particular, in addition to the minimal 6 parameters describing $\Lambda$CDM, the CMB anisotropies allow to indirectly constrain other parameters, such as the Hubble parameter $H_0$, which represents the current expansion rate of the Universe. The inference of $H_0$ strongly depends on the assumed cosmological model. For example, relaxing the spatial flatness hypothesis of our Universe or the constant equation of state for the dark energy, would impact the $H_0$ estimation.
+\\
+In parallel, the are other independent methods to measure $H_0$, such as the distance ladder [cita], water masers [cita], the time delay between multiple images of gravitationally lensed quasars \cite{H0licow_I} and, gravitational waves [cita]. 
+\\
+The highest precision reached by Plank has however shown a tension in the value of $H_0$ with respect to the distance ladder measurements, which has been further enhanced by the recent gravitational lensing results from the H0LiCOW collaboration \cite{H0licow_XIII}, whose measured value is $H_0=73.3^{+1.7}_{-1.8}$ km s$^{-1}$ Mpc$^{-1}$, in agreement with the distance ladder results and, together with them, with a $5.3 \, \sigma$ tension with the Planck analysis, assuming the flat $\Lambda$CDM model.
+\\
+In this paper we will focus on the gravitational lensing method: firstly suggested by Refsdal \cite{Refsdal1964}, this method directly relates the time delays between multiple images of the same source produced by a lensing object with $H_0$ in the form $\Delta_T \propto 1/H_0$. This method depends on the matter distribution in the light trajectory from the source, namely the lensing object (such as a galaxy or a cluster of galaxies) and objects along the line of sight, and it has a weaker dependence on the cosmological model if compared to the CMB analyses. In particular, it depends on the matter density $\Omega_m$, the dark energy density $\Omega_\Lambda$, the curvature parameter $\Omega_k$ and the dark energy equation of state $\omega$ [cita].
+\\
+This method requires a long photometric monitoring of the multiple images of the source, of the order of years, and a proper temporal sampling, to be able to observe the photometric variations of the source. In this regard, the COSMOGRAIL \cite{Cosmograil2020} collaboration has been monitoring 18 strongly lensed quasars since 2004  with 1-2 m size telescopes. And the H0LiCOW collaboration has used part of these data to evaluate $H_0$ with a precision of $2.4\%$ \cite{H0licow_XIII}. 
+\\
+Improving the precision in the $H_0$ evaluation will help in finding the reason of the big discrepancy between the measured values of $H_0$, and, it would also have a big impact in the results of the next cosmological surveys, up to a 40$\%$ improvement if $H_0$ is independently known with $1\%$ precision \cite{Weinberg2013}.
+\\
+In this paper we propose a novel method to improve the statistics of available time delay measurements of lensed quasars to be used for the determination of $H_0$. In fact, as said, monitoring campaigns are often conducted by small-medium sized telescopes, that have a reduced angular resolution with respect to big telescopes, hence the available sample of light curves of optically fully-resolved multiple images of lensed quasars is limited. In fact, several gravitationally-lensed quasars have angular separation of 1.5 arcsec or smaller between the multiple images (ref. CASTLE database), at the edge of the resolution of many small telescopes. However, we propose a method such that, even when the multiple images of the source cannot be fully resolved by the telescope, still a time delay can be retrieved if data are taken in at least two different photometric filters, exploiting a feature of the variability of the luminosity of quasars, which is not uniform among various frequency bands. The time delay is then extracted not from (at least) two light curves of different resolved images, rather from (at least) two light curves of not-resolved images in different photometric filters. 
+\\
+The paper is organised as follows. In Sec. 2 we describe the Monte Carlo simulations used in our work to estimate the time delays between light curves. In Sec. 3 we describe the statistical methods to derive time delays and the corresponding errors, where we will also introduce deep gaussian processes. In Sec. 4 we will show the performances of the previous methods applied both on our Monte Carlo simulations and on the real data from COSMOGRAIL \cite{Cosmograil2020}. In Sec. 5 we will discuss about the color variability of quasars. In sec. 6 we will describe our proposed method to estimate the time delay for not resolved lensed quasars by using the color information. And finally, in Sec. 7 we will show the results of the proposed method.
+
+
+%------------------------------------------------
+
+\section{Monte Carlo Simulations of Quasars Light Curves}
+
+Parte che potrebbe scrivere Luca Paganin?
+\\
+Text requiring further explanation\footnote{Example footnote}.
+
+%------------------------------------------------
+
+\section{Statistical Methods to Derive the Time Delay}
+
+Parte che potrebbe scrivere Luca Biggio?
+\\
+(se possibile io metterei anche i deep gaussian processes)
+
+
+%------------------------------------------------
+
+\section{Time Delay Estimations}
+ 
+ Qui mostrerei i risultati dei metodi applicati sia al Monte Carlo che ai dati di Cosmograil: per il Monte Carlo mostrerei quel bel grafico che ha fatto Luca con il vero DeltaT e quello stimato. Per i dati veri farei una tabella tipo:
+ \begin{table}[h]
+ 	\begin{tabular}{c|c|c}
+ 	Quasar	& $\Delta$t from other searches &  Our $\Delta$t  \\
+ 		&  &    \\
+ 		&  &  \\
+ 		&  & 
+ 	\end{tabular}
+ \end{table}
+\\
+Sarebbe fantastico non limitarsi solo ai quasars di cosmograil ma guardare anche https://research.ast.cam.ac.uk/lensedquasars/index.html
+\\
+Inoltre, parlerei di: 
+\begin{enumerate}
+	\item Come varia la stima di $\Delta$t al variare del campionamento dei gaussian processes
+	\item Commenti sulla stima di $\Delta$t con il metodo standard e con i deep gaussian processes (qui bisogna vedere i risultati)
+\end{enumerate} 
+
+
+\section{Quasars Color Variability}
+Parte che posso scrivere io (Alba).
+\\
+The study of quasars light curves has long been seen as a way to understand the structure of the central engine of active galactic nuclei.
+leggi https://academic.oup.com/mnras/article/344/2/492/1124264 per i modelli che spiegano la variabilità dei colori.
+
+
+\section{Method to estimate $\Delta$t in non resolved lensed quasars}
+Parte che posso scrivere io (Alba).
+\\
+Reminder: cita anche il paper del microlensing che in alcuni casi può far variare il colore
+
+\section{Time Delay Estimation from Non Resolved Multiple Images}
+
+Qui mettiamo i risultati.
+\\
+Usare curve Monte Carlo da GERLUMPH?
+\\
+\textcolor{red}{Un'obiezione che possono fare è che nel caso delle lenti non risolte, non si riesce comunque ad osservare bene nel dettaglio la forma della galassia lente (nemmeno con il telescopio Hubble), e questo porta ad un errore maggiore nella stima di H0. Noi dobbiamo evidenziare il fatto che nuovi telescopi ad altissima risoluzione, quali Euclid (altro collegamento per Luca), FORSE il telescopio James Webb, e infine LSST.}
+
+
+\subsection{Subsection One}
+
+A statement requiring citation \cite{Figueredo:2009dg}.
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{\bibname}
+\nocite{*}
+\onecolumn{\printbibliography}
+
+\begin{comment}
+
+\begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
+
+\bibitem{h0licow_I}
+The H0LiCOW Collaboration,
+\textit{MNRAS, Volume 468, Issue 3} (2017)
+
+\bibitem{h0licow_XIII}
+The H0LiCOW Collaboration,
+\textit{MNRAS, stz3094} (2020)
+
+\bibitem{refsdal}
+S. Refsdal,
+\textit{MNRAS, 128, 307} (1964)
+
+\bibitem{cosmograil}
+The COSMOGRAIL Collaboration,
+\textit{arXiv:2002.05736v1} (2020)
+
+\bibitem{weinberg_euclid}
+D. Weinberg et al.,
+\textit{Phys. Rep., 530, 87} (2013)
+
+\end{thebibliography}
+
+\end{comment}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
