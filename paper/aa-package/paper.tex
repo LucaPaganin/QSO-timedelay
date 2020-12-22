@@ -13,8 +13,10 @@
 
 %
 \documentclass{aa}  
+ 
+\usepackage{natbib}
+\bibliographystyle{aa}
 
-\usepackage[]{natbib}
 
 %
 \usepackage{graphicx}
@@ -30,10 +32,10 @@
 
    \title{Time delay estimation in unresolved lensed quasars}
 
-   \author{G. Wuchterl
+   \author{Author1
           \inst{1}
           \and
-          C. Ptolemy\inst{2}\fnmsep\thanks{Just to show the usage
+          Author2\inst{2}\fnmsep\thanks{Just to show the usage
           of the elements in the author field}
           }
 
@@ -71,9 +73,11 @@
   % conclusions heading (optional), leave it empty if necessary 
    {}
 
-   \keywords{giant planet formation --
-                $\kappa$-mechanism --
-                stability of gas spheres
+   \keywords{Gravitational lensing --
+                Hubble parameter --
+                Quasars -- 
+                Galaxies --
+                Machine Learning
                }
 
    \maketitle
@@ -81,7 +85,9 @@
 %-------------------------------------------------------------------
 
 \section{Introduction}
-The Hubble parameter $H_0$ quantifies the expansion rate of the Universe and can be measured in different ways. The Planck collaboration \cite{planck} has found $H_0 = 67.4 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$ from the Cosmic Microwave Background anisotropies spectrum \footnote{Assuming the $\Lambda$CDM cosmological model.}, whereas, cosmic distance ladder observations \cite{cepheid_H0} give $H_0 = 74.03 \pm 1.42$ km s$^{-1}$ Mpc$^{-1}$, resulting in a tension of about $4.4\sigma$.\\ As first pointed out in \cite{Refsdal1964}, gravitational lensing offers an alternative way of determining the Hubble parameter. The light rays coming from a distant source, e.g. a quasar, can be deflected by the gravitational field of an intervening massive object, like a galaxy. If the field is strong enough, multiple images of the same source will be observed and, by tracking the light intensity of each image over time, one can obtain a so-called \emph{light curve}. The light curves associated with different images will exhibit a mutual time-delay, due to the different paths that the photons have travelled. As shown in \cite{Refsdal1964}, this time-delay can be directly related to $H_0$. The H0LiCOW collaboration \cite{H0licow_XIII} found $H_0 = 73.3_{-1.8}^{+1.7}$ km s$^{-1}$ Mpc$^{-1}$ from a sample of six lensed quasars monitored by the COSMOGRAIL \cite{Cosmograil2020} project, enhancing the tension up to $5.3 \sigma$, and thus motivating further studies aimed at improving the precision in the estimate of $H_0$.
+The Hubble parameter $H_0$ quantifies the current expansion rate of the Universe. The measured value of $H_0$ from different observations have led to a tension. In particular, EU observations [\cite{planck}] have measured $H_0 = 67.4 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$, whereas, LU observations [\cite{cepheid_H0}] give $H_0 = 74.03 \pm 1.42$ km s$^{-1}$ Mpc$^{-1}$, resulting in a tension of about $4.4\sigma$.
+\\ 
+As first pointed out in [\cite{Refsdal1964}], time-delay cosmography offers an alternative way of determining the Hubble parameter: the light rays coming from a distant source, e.g. a quasar, can be deflected by the gravitational field of an intervening massive object, e.g. a galaxy. If the field is strong enough, multiple images of the same source will be observed and, by tracking the light intensity of each image over time, a \emph{light curve} is obtained. Light curves associated with different images will exhibit a mutual time-delay ($\Delta T$), due to the different paths that the photons have travelled. As shown in [\cite{Refsdal1964}], this time-delay is related to the Hubble parameter as $H_0 \propto 1/\Delta T$. The major results obtained via time-delay cosmography come from the H0LiCOW collaboration [\cite{H0licow_XIII}], which has found $H_0 = 73.3_{-1.8}^{+1.7}$ km s$^{-1}$ Mpc$^{-1}$ from a sample of six lensed quasars monitored by the COSMOGRAIL  project [\cite{Cosmograil2020}], enhancing the tension up to $5.3 \sigma$. However, a more recent analysis of 40 strong gravitational lenses, from TDCOSMO+SLACS \cite{tdcosmo}, has found $H_0 = 67.4_{-3.2}^{+4.1}$ km s$^{-1}$ Mpc$^{-1}$, relaxing the Hubble tension and demonstrating the importance of understanding the lenses mass density profiles. This scenario motivates further studies aimed at improving the precision in the $H_0$ estimation.
 \\
 Time-delays between light curves of Gravitationally Lensed Quasars (GLQs) can be estimated with various methods \cite{Tewes2013}, such as free-knot spline interpolation \cite{free} or via Gaussian Process (GP) regression \cite{Rasmussen}. Such methods work under the assumption that multiple images of the same quasar are fully resolved so that a light curve can be extracted for each of them. However, most known GLQs \cite{quasars_db} have small angular separations $\Delta\theta < \sim{3}{arcsec}$. 
 This would make big telescopes the ideal instruments to perform lensed quasars monitoring, both in light of their high angular resolution and the geographical areas they are placed in, where the effects of atmospheric turbulence are less prominent.
@@ -376,8 +382,9 @@ Here, we propose a novel approach based on Machine Learning (ML) algorithms to e
 % - join the .bib files when you upload your source files
 %-------------------------------------------------------------------
 
-\bibliographystyle{./bibtex/aa} % style aa.bst
-\bibliography{./bibtex/biblio}
+%\bibliographystyle{./aa} % style aa.bst
+%\bibliographystyle{unsrtnat}
+\bibliography{./biblio}
 
 \end{document}
 
@@ -736,7 +743,7 @@ Gl 86
 %               Appendices have to be placed at the end, after
 %                                        \end{thebibliography}
 %-------------------------------------------------------------
-\end{thebibliography}
+%\end{thebibliography}
 
 \begin{appendix} %First appendix
 \section{Background galaxy number counts and shear noise-levels}

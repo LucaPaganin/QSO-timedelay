@@ -2063,6 +2063,8 @@
 \newcommand{\eprint}[2][]{%
 {\tt\if!#1!#2\else#1\arxivprefixesep\ignorespaces#2\fi}%
 }
+% \corr : Mute tag used by LE
+\newcommand{\corr}[1]{#1}
 \endinput
 %%
 %% End of file `aa.cls'.
