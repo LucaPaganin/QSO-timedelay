@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  22 DEC 2020 17:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.11.17)  25 DEC 2020 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -940,70 +940,51 @@ LaTeX Font Info:    Font shape `T1/txss/m/n' will be
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
 (Font)              scaled to size 10.40245pt on input line 89.
 
+<Figures/QSO_sep_mag_both.pdf, id=1, 1706.375pt x 1084.05pt>
+File: Figures/QSO_sep_mag_both.pdf Graphic file (type pdf)
 
-Package natbib Warning: Citation `Tewes2013' on page 1 undefined on input line 
-100.
-
-
-Package natbib Warning: Citation `free' on page 1 undefined on input line 100.
-
-
-Package natbib Warning: Citation `Rasmussen' on page 1 undefined on input line 
-100.
-
-
-Package natbib Warning: Citation `quasars_db' on page 1 undefined on input line
- 100.
-
-
-Package natbib Warning: Citation `Borgeest1996' on page 1 undefined on input li
-ne 103.
+<use Figures/QSO_sep_mag_both.pdf>
+Package pdftex.def Info: Figures/QSO_sep_mag_both.pdf used on input line 105.
+(pdftex.def)             Requested size: 256.0748pt x 162.68318pt.
 
 
 Package natbib Warning: Citation `karttunen2016fundamental' on page 1 undefined
- on input line 103.
-
-
-Package natbib Warning: Citation `free' on page 1 undefined on input line 103.
-
-
-Package natbib Warning: Citation `Rasmussen' on page 1 undefined on input line 
-103.
+ on input line 110.
 
 
 Package natbib Warning: Citation `CosmograilData' on page 1 undefined on input 
-line 104.
+line 112.
 
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 
-Package natbib Warning: Citation `baker' on page 2 undefined on input line 123.
+Package natbib Warning: Citation `baker' on page 2 undefined on input line 131.
 
 
 
-Package natbib Warning: Citation `baker' on page 2 undefined on input line 129.
+Package natbib Warning: Citation `baker' on page 2 undefined on input line 137.
 
 
 
-Package natbib Warning: Citation `baker' on page 2 undefined on input line 139.
+Package natbib Warning: Citation `baker' on page 2 undefined on input line 147.
 
 
 
-Package natbib Warning: Citation `baker' on page 2 undefined on input line 232.
+Package natbib Warning: Citation `baker' on page 2 undefined on input line 240.
 
 
 
-Package natbib Warning: Citation `cox' on page 2 undefined on input line 232.
+Package natbib Warning: Citation `cox' on page 2 undefined on input line 240.
 
-[2]
+[2 <./Figures/QSO_sep_mag_both.pdf>]
 
-Package natbib Warning: Citation `baker' on page 3 undefined on input line 357.
+Package natbib Warning: Citation `baker' on page 3 undefined on input line 365.
 
 
 (./paper.bbl
-Underfull \hbox (badness 3965) in paragraph at lines 17--19
+Underfull \hbox (badness 3965) in paragraph at lines 22--24
 []\T1/txr/m/n/8 Millon, M., Courbin, F., Bon-vin, V., et al. 2020, As-tron. As-
 tro-phys.
  []
@@ -1014,13 +995,13 @@ Package natbib Warning: There were undefined citations.
 
 [3] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6206 strings out of 492995
- 79881 string characters out of 6132703
- 169854 words of memory out of 5000000
- 9559 multiletter control sequences out of 15000+600000
+ 6218 strings out of 492995
+ 80195 string characters out of 6132703
+ 168017 words of memory out of 5000000
+ 9568 multiletter control sequences out of 15000+600000
  88195 words of font info for 147 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,45p,1451b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,11n,45p,1451b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.
 enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></
 usr/local/texlive/2017/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/loc
@@ -1033,10 +1014,10 @@ ype1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/ur
 w/times/utmb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (3 pages, 98982 bytes).
+Output written on paper.pdf (3 pages, 149198 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

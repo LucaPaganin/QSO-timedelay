@@ -3,55 +3,52 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: paper.aux
 The style file: aa.bst
 Database file #1: ./biblio.bib
-Warning--I didn't find a database entry for "Tewes2013"
+Warning--I didn't find a database entry for "karttunen2016fundamental"
 Warning--I didn't find a database entry for "free"
 Warning--I didn't find a database entry for "Rasmussen"
-Warning--I didn't find a database entry for "quasars_db"
-Warning--I didn't find a database entry for "Borgeest1996"
-Warning--I didn't find a database entry for "karttunen2016fundamental"
 Warning--I didn't find a database entry for "CosmograilData"
 Warning--I didn't find a database entry for "baker"
 Warning--I didn't find a database entry for "cox"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 6 entries,
+You've used 9 entries,
             3039 wiz_defined-function locations,
-            723 strings with 7009 characters,
-and the built_in function-call counts, 5066 in all, are:
-= -- 374
-> -- 653
-< -- 1
-+ -- 219
-- -- 213
-* -- 488
-:= -- 968
-add.period$ -- 6
-call.type$ -- 6
-change.case$ -- 95
-chr.to.int$ -- 6
-cite$ -- 6
-duplicate$ -- 110
-empty$ -- 152
-format.name$ -- 225
-if$ -- 970
+            738 strings with 7448 characters,
+and the built_in function-call counts, 6521 in all, are:
+= -- 508
+> -- 737
+< -- 2
++ -- 246
+- -- 237
+* -- 601
+:= -- 1216
+add.period$ -- 9
+call.type$ -- 9
+change.case$ -- 115
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 174
+empty$ -- 250
+format.name$ -- 260
+if$ -- 1272
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 6
-newline$ -- 22
-num.names$ -- 24
-pop$ -- 94
+missing$ -- 7
+newline$ -- 31
+num.names$ -- 36
+pop$ -- 117
 preamble$ -- 1
-purify$ -- 95
+purify$ -- 115
 quote$ -- 0
-skip$ -- 86
+skip$ -- 149
 stack$ -- 0
-substring$ -- 103
-swap$ -- 2
+substring$ -- 190
+swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 54
+type$ -- 81
 warning$ -- 0
-while$ -- 22
+while$ -- 35
 width$ -- 0
-write$ -- 63
-(There were 9 warnings)
+write$ -- 93
+(There were 6 warnings)

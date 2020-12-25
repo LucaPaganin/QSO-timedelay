@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{9}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Aghanim {et~al.}(2020)Aghanim, Akrami, Ashdown, Aumont, Baccigalupi,
@@ -10,6 +10,11 @@ Aghanim, N., Akrami, Y., Ashdown, M., {et~al.} 2020, Astronomy \& Astrophysics,
   Auger, Chen, Christensen, Collett, \& et~al.}]{tdcosmo}
 Birrer, S., Shajib, A.~J., Galan, A., {et~al.} 2020, Astronomy \& Astrophysics,
   643, A165
+
+\bibitem[{Borgeest {et~al.}(1996)Borgeest, Schramm, \& {Von
+  Linde}}]{Borgeest1996}
+Borgeest, U., Schramm, K.-J., \& {Von Linde}, J. 1996, in Examining Big Bang
+  Diffus. Backgr. Radiations (Springer Netherlands), 527--528
 
 \bibitem[{Millon {et~al.}(2020)Millon, Courbin, Bonvin, Paic, Meylan, Tewes,
   Sluse, Magain, Chan, Galan, Joseph, Tihhonova, Anderson, Marmier, Chazelas,
@@ -24,6 +29,14 @@ Refsdal, S. 1964, Monthly Notices of the Royal Astronomical Society, 128, 307
   Scolnic}]{cepheid_H0}
 Riess, A.~G., Casertano, S., Yuan, W., Macri, L.~M., \& Scolnic, D. 2019, The
   Astrophysical Journal, 876, 85
+
+\bibitem[{Shu {et~al.}(2020)Shu, Belokurov, \& Evans}]{shu2020discovering}
+Shu, Y., Belokurov, V., \& Evans, N.~W. 2020, Discovering Strongly-lensed QSOs
+  From Unresolved Light Curves
+
+\bibitem[{Tie \& Kochanek(2017)}]{Tie_2017}
+Tie, S.~S. \& Kochanek, C.~S. 2017, Monthly Notices of the Royal Astronomical
+  Society, 473, 80–90
 
 \bibitem[{Wong {et~al.}(2020)Wong, Suyu, Chen, Rusu, Millon, Sluse, Bonvin,
   Fassnacht, Taubenberger, Auger, Birrer, Chan, Courbin, Hilbert, Tihhonova,
