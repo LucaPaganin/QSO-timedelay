@@ -3,52 +3,49 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: paper.aux
 The style file: aa.bst
 Database file #1: ./biblio.bib
-Warning--I didn't find a database entry for "karttunen2016fundamental"
-Warning--I didn't find a database entry for "free"
-Warning--I didn't find a database entry for "Rasmussen"
 Warning--I didn't find a database entry for "CosmograilData"
 Warning--I didn't find a database entry for "baker"
 Warning--I didn't find a database entry for "cox"
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 9 entries,
+You've used 10 entries,
             3039 wiz_defined-function locations,
-            738 strings with 7448 characters,
-and the built_in function-call counts, 6521 in all, are:
-= -- 508
-> -- 737
-< -- 2
-+ -- 246
-- -- 237
-* -- 601
-:= -- 1216
-add.period$ -- 9
-call.type$ -- 9
-change.case$ -- 115
-chr.to.int$ -- 9
-cite$ -- 9
-duplicate$ -- 174
-empty$ -- 250
-format.name$ -- 260
-if$ -- 1272
+            740 strings with 7485 characters,
+and the built_in function-call counts, 6841 in all, are:
+= -- 533
+> -- 748
+< -- 3
++ -- 250
+- -- 240
+* -- 623
+:= -- 1276
+add.period$ -- 10
+call.type$ -- 10
+change.case$ -- 120
+chr.to.int$ -- 10
+cite$ -- 10
+duplicate$ -- 190
+empty$ -- 284
+format.name$ -- 264
+if$ -- 1338
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 7
-newline$ -- 31
-num.names$ -- 36
-pop$ -- 117
+missing$ -- 8
+newline$ -- 34
+num.names$ -- 40
+pop$ -- 123
 preamble$ -- 1
-purify$ -- 115
+purify$ -- 120
 quote$ -- 0
-skip$ -- 149
+skip$ -- 165
 stack$ -- 0
-substring$ -- 190
+substring$ -- 201
 swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 81
+type$ -- 87
 warning$ -- 0
-while$ -- 35
+while$ -- 38
 width$ -- 0
-write$ -- 93
-(There were 6 warnings)
+write$ -- 103
+(There were 3 warnings)
