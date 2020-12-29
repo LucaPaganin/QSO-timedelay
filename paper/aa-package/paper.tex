@@ -105,7 +105,7 @@ In this respect, Fig. \ref{fig:qsosepmagboth} (bottom) shows the magnitude of th
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1.0\linewidth]{Figures/QSO_sep_mag_both}
-	\caption[cm]{Top-left: distribution of known GLQs as a function of the number of multiple images. Top-right: distribution of known GLQs as a function of the maximum angular separation. Bottom (left and right): Magnitude of the multiple images versus the maximum image separation. The grey region contains 70$\%$ of the total GLQ sample.}
+	\caption[cm]{Top-left: distribution of known GLQs as a function of the number of multiple images. Top-right: distribution of known GLQs as a function of the maximum image separation. Bottom (left and right): Magnitude of the multiple images versus the maximum image separation. The grey region contains 70$\%$ of the total GLQ sample.}
 	\label{fig:qsosepmagboth}
 \end{figure}
 \\
@@ -117,13 +117,19 @@ Therefore, the majority of GLQs already known, together with future discoveries,
 \\
 For simplicity, in this work we focus on double-lensed GLQs. This choice is further motivated by the fact that the majority of the already known systems are doubles, as shown in Fig. \ref{fig:qsosepmagboth} (top-left). However, [\cite{shu2020discovering}] expect to find a consistent quantity of quadruply-imaged QSOs in the future. Therefore, we plan to extend our work for systems with N>2 images.
 \\
-The paper is structured as follows: Sec. \ref{sec:MC} describes the Monte Carlo (MC) simulations we performed.... Sec 3...
+The paper is structured as follows: Sec. \ref{sec:idea_and_method description} describes the ML-based method we use for evaluating the time delay between multiple images. Sec. \ref{sec:MC} describes the Monte Carlo (MC) simulations needed to train our ML algorithm. Sec. \ref{sec:test_approach} shows the results of our method in a test dataset obtained by simulating the real systems RXJ1131. Finally, Sec. \ref{sec:real_data} shows our evaluated time delays for real systems and compare it with other estimations.
 
 
-
+\section{Time delay estimation with ML technique} \label{sec:idea_and_method description}
    
 %--------------------------------------------------------------------
 \section{Light Curves Simulation} \label{sec:MC}
+
+
+\section{Test approach on fake dataset} \label{sec:test_approach}
+
+
+\section{Results on real data} \label{sec:real_data}
 
 %-------------------------------------- Two column figure (place early!)
    \begin{figure*}
@@ -138,24 +144,8 @@ The paper is structured as follows: Sec. \ref{sec:MC} describes the Monte Carlo 
               \label{FigGam}%
     \end{figure*}
 %
-   In this section the one-zone model of \citet{baker},
-   originally used to study the Cephe{\"{\i}}d pulsation mechanism, will
-   be briefly reviewed. The resulting stability criteria will be
-   rewritten in terms of local state variables, local timescales and
-   constitutive relations.
-
-   \citet{baker} investigates the stability of thin layers in
-   self-gravitating,
-   spherical gas clouds with the following properties:
-   \begin{itemize}
-      \item hydrostatic equilibrium,
-      \item thermal equilibrium,
-      \item energy transport by grey radiation diffusion.
-   \end{itemize}
-   For the one-zone-model Baker obtains necessary conditions
-   for dynamical, secular and vibrational (or pulsational)
-   stability (Eqs.\ (34a,\,b,\,c) in Baker \citeyear{baker}). Using Baker's
-   notation:
+   
+   params
    \[
       \begin{array}{lp{0.8\linewidth}}
          M_{r}  & mass internal to the radius $r$     \\
